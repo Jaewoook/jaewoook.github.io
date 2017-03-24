@@ -5,10 +5,9 @@
 
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <meta property="og:title" content="The Rock" />
-  <meta property="og:type" content="video.movie" />
-  <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
-  <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+  <meta property="og:title" content="{{ㅔpage.title}}" />
+  <meta property="og:type" content="text/html" />
+  <meta property="og:url" content="http://jaewoook.github.io/{{page.url}}" />
 
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
