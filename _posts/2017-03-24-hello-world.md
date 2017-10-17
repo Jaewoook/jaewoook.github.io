@@ -6,7 +6,7 @@ height: 1
 color: red
 permalink: /1
 date: 2017-03-24 16:15:00 +0900
-categories: blog personal
+categories: blog
 ---
    
 블로그를 만들고 첫 글이다. 포트폴리오를 만들어야겠다는 생각과 함께 주변 사람들이 Github Pages로 자기 페이지를 운영하는 것을 봤다. 그래서 "나도 해봐야지"라는 생각만 하고 그동안 블로그 만드는 것을 방치해뒀다가 갑자기 생각나서 Jekyll로 테마를 입히고 블로그를 구축했다.  
