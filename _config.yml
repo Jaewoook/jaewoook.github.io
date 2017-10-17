@@ -18,3 +18,4 @@ github_username:  jaewoook
 
 # Build settings
 markdown: kramdown
+theme: jekyll-theme-hacker
