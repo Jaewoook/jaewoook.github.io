@@ -11,7 +11,7 @@
 일단 공식 페이지에 있는 대로 기본적인 테마와 플러그인들을 설치하고 만족하면서 쓰고 있었는데, 주로 사용하는 맥북 말고도 데스크탑에도 똑같은 터미널 환경을 만들고 싶어서 이왕 꾸밀거 예쁘게 꾸며보려고 관련된 플러그인들과 테마를 조금 찾아봤다. 그리고 아래는 내 터미널의 현재 모습이다.
   
 ---
-![Current Hyperterm](/Users/ahnjaewook/Desktop/Screen Shot 2017-10-05 at 5.22.25 PM.png "Current Hyperterm")
+![Current Hyperterm](https://github.com/Jaewoook/jaewoook.github.io/blob/master/assets/hyper/current_terminal.png "Current Hyperterm")
 ---
   
 Hyper의 모든 터미널의 설정은 `.hyper.js`에서 Javascript 문법으로 설정한다. JSON 형식의 Key/Value를 설정하면서 터미널을 설정하는데 Preferences 패널을 열어서 어느 설정이 어디있는지 복잡한 터미널 설정들을 저렇게 하니까 편했다.(높은 확률로 내가 몰라서 불편했던거다.)
@@ -32,7 +32,7 @@ chsh -s /usr/local/bin/zsh
 `hyper`에서는 저렇게 기본 쉘을 바꿔준다고 바로 적용되는 것이 아닌 듯 하다. 그러면 어떻게 해야할까? `.hyper.js`파일에 있는 `module.exports.config.shell`의 값을 아래와 같이 바꿔주자.
 
 ---
-![change shell in config file!](/Users/ahnjaewook/Desktop/Screen Shot 2017-10-17 at 2.11.27 PM.png)
+![change shell in config file!](https://github.com/Jaewoook/jaewoook.github.io/blob/master/assets/hyper/change_shell.png)
 > // 주석에도 설명이 되어있다.
 
 ---
@@ -42,7 +42,7 @@ chsh -s /usr/local/bin/zsh
 멋진 터미널을 위해! 여러가지 플러그인들을 가져다가 썼다. [Awesome Hyper](https://github.com/bnb/awesome-hyper) 문서를 보고 플러그인과 테마들을 찾아다녔다. 역시 어-썸하다. 아래는 내가 사용한 플러그인 목록이다.
 
 ---
-![plugins](/Users/ahnjaewook/Desktop/Screen Shot 2017-10-17 at 2.40.50 PM.png)
+![plugins](https://github.com/Jaewoook/jaewoook.github.io/blob/master/assets/hyper/plugins.png)
 ---
 
 오피셜에과 주석에도 등장하는 `hyperpower`, Atom 에디터의 `active-power-mode` 플러그인을 모티브로 만든 것 같다. 그냥 적용해서 잘 쓰고 있다. 별로 안거슬려서..
@@ -69,13 +69,13 @@ chsh -s /usr/local/bin/zsh
 `zsh` 와 `oh-my-zsh`를 설치하고 `agnoster`까지 적용하고 터미널을 보면 폰트가 깨진 것 같이 보인다. `PowerlineSymbols` 폰트를 설치해야 하는데, 그냥 다운받아서 설치하면 된다. 그리고 `hyper`에 적용하려면 아래 사진처럼 fontFamily 속성에 추가한 폰트를 적용해야 한다.
 
 ---
-![apply powerlinesymbols](/Users/ahnjaewook/Desktop/Screen Shot 2017-10-17 at 3.00.08 PM.png)
+![apply powerlinesymbols](https://github.com/Jaewoook/jaewoook.github.io/blob/master/assets/hyper/apply_font.png)
 ---
 
 이것 외엔 그냥 설정파일 쭉 읽다가 바꾸고 싶은대로 설정값을 변경하고 저장하면 자동으로 Configuration updated 알림이 뜰 것이다.
 
 ---
-![configuration updated notification](/Users/ahnjaewook/Desktop/Screen Shot 2017-10-17 at 3.04.39 PM.png)
+![configuration updated notification](https://github.com/Jaewoook/jaewoook.github.io/blob/master/assets/hyper/configuration_updated.png)
 ---
 
 반영이 안되는 것 같다 싶으면, `Command` + `Shift` + `R` 을 눌러 Full Reload를 하던지, `Command` + `Shift` + `U`를 눌러 플러그인 업데이트를 해보자.
@@ -93,7 +93,7 @@ js파일을 위에서 아래로 읽어 내려가면서 설정값을 적용해서
 어쨌든 위에서 얘기한 `hyperterm-final-say`라는 플러그인은 플러그인들이 `.hyper.js`의 설정값들을 덮어써도 내가 원하는 부분만 다시 바꿀 수 있는 플러그인이다. 이걸로 내가 원하는 컬러를 Google Material Design Guide에 있는 색 중에 골라서 적용했다.
 
 ---
-![custom color](/Users/ahnjaewook/Desktop/Screen Shot 2017-10-17 at 2.38.43 PM.png)
+![custom color](https://github.com/Jaewoook/jaewoook.github.io/blob/master/assets/hyper/change_color.png)
 ---
 
 
