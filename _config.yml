@@ -2,7 +2,7 @@
 title: Jaewook Ahn's Logbase
 description: 'A private blog kind of develop articles, life stories.'
 keyword: 'blog, develop, photo, essay, portfolio'
-url: 'http://jaewook.ga' # your host
+url: 'https://jaewoook.github.io' # your host
 
 # if you don't need baseurl, you should leave this value blank.
 baseurl: ''
