@@ -1,8 +1,17 @@
 ---
-layout: page
+layout: default
+header-img: "assets/img/hero.jpg"
+description: "Sorry, Page Not Found :("
 ---
 
-<div>
-    <h1>Unable to find requested page!</h1>
+{% include header.html %}
 
-</div>
+<header class="g-banner np-banner {{ site.postPatterns | prepend: 'post-pattern-' }}" data-theme="{{ site.theme-color }}">
+    <div class="post-wrapper">
+        <h1>404</h1>
+        <span class="subheading">{{ page.description }}</span>
+        <a href="{{ site.nav.home }}" class="btn">Back to home</a>
+    </div>
+</header>
+
+

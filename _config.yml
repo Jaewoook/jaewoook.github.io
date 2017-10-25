@@ -1,21 +1,65 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
-title: Jaewook Ahn
-email: ajw4586@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Jaewook Ahn, ajw4586@gmail.com
-port: 4586
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jaewoook
+title: Jaewook Ahn's Logbase
+description: 'A private blog kind of develop articles, life stories.'
+keyword: 'blog, develop, photo, essay, portfolio'
+url: 'http://jaewook.ga' # your host
+
+# if you don't need baseurl, you should leave this value blank.
+baseurl: ''
+
+# Navigation links
+nav:
+  home: '/'
+  tags: '/tags.html'
+
+# Author
+author: 'Jaewook Ahn'
+nickname: 'meltwater'
+bio: 'A developer, University student, Photographer.'
+avatar: '/assets/img/profile.jpg'
+
+# Search
+search: true
+
+# Night mode
+nightMode: true
+
+# Comments
+disqus: true
+# disqus_url: 'https://liaokeyu.disqus.com/embed.js'
+
+# Share
+social-share: true
+social-share-items: ['facebook', 'twitter']
+
+# theme color 主题皮肤
+theme-color: 'default'  # pink or default
+
+# Post header background patterns (when the post no cover): circuitBoard, overlappingCircles, food, glamorous, ticTacToe, seaOfClouds
+postPatterns: 'circuitBoard'
+
+# SNS settings 配置社交网站url: weibo, zhihu, twitter, instagram, juejin, github, douban, facebook, dribble, uicn, jianshu, medium, linkedin
+sns:
+  facebook: '//fb.com/ahnjaewook98'
+  instagram: '//www.instagram.com/ahnjaewook'
+  github: '//github.com/jaewoook'
+
+# Tags
+recommend-tags: true # whether or not display recommend-tags on the sidebar
+recommend-condition-size: 12 # a tag will be recommended if the size of it is more than this value
 
 # Build settings
+paginate: 6
+paginate_path: 'page:num'
+exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'README.md']
+
+# Markdown
 markdown: kramdown
-theme: jekyll-theme-hacker
+highlighter: rouge
+kramdown:
+  input: GFM
+
+RSS: false
+
+# Plugins
+plugins: [jekyll-paginate]
