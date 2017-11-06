@@ -115,6 +115,11 @@ Windows 용으로 있던 `Chocolately`같은 Package Manager를 사용하지 않
 
 ---
 
+![](/assets/img/wsl_setup/finish_node.png)
+> // npm 은 PATH가 꼬인듯 하다.
+
+---
+
 
 
 <br>
