@@ -22,7 +22,7 @@ avatar: '/assets/img/profile.jpg'
 search: true
 
 # Night mode
-nightMode: true
+nightMode: false
 
 # Comments
 disqus: true
