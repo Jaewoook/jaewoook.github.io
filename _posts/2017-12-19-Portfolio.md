@@ -1,7 +1,7 @@
 ---
 layout: post
 title: About me
-date: 20178-10-16
+date: 2018-10-16
 ---
 
 # About me
