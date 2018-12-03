@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dell XPS 13 9360 자동밝기 이슈 해결하기
+cover: /assets/img/xps-dbc/dbc-driver.png
 date: 2018-12-04
 ---
 
