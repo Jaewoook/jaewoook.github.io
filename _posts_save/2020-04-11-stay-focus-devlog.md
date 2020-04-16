@@ -52,7 +52,7 @@ tags: blog develop guide chrome-extension stay-focus
 
 그리고 `tsconfig.json` 을 작성해주면 끝이다. CRA로 만든 프로젝트는 이미 타입스크립트 템플릿으로 생성되었기 때문에 따로 tsconfig 을 수정하지 않았고, content-scripts 는 직접 tsconfig.json 을 수정해다.
 
-### 빌드 & 패키지, 그리고 테스트
+### 빌드 & 패키지
 
 타입스크립트로 프로젝트를 하려니까 자바스크립트로 트랜스파일하고, content-scripts, popup 등을 한데 묶어야 했다. 생각보다 귀찮다. 이 작업을 매번 소스 수정하고 테스트 하기 위해 수동으로 하기에는 너무 귀찮다. 그래서 생각을 했다. 그냥 root 폴더에 `package.json` 파일 하나 만들고 scripts 에 내부 프로젝트에서 쓰이는 커맨드들을 묶어주는 커맨드를 한번 더 적었다. 이 이상 간단하게 할 방법은 생각이 안났다.
 
@@ -71,4 +71,19 @@ tags: blog develop guide chrome-extension stay-focus
 ...
 ```
 
-각각 프로젝트 설치도 귀찮아서 루트 폴더에서 yarn install 하면 postinstall 로 설치되게끔 했다. yarn workspaces 나 lema 같은 
+각각 프로젝트 설치도 귀찮아서 루트 폴더에서 yarn install 하면 postinstall 로 설치되게끔 했다. yarn workspaces 나 lerna 같은걸 써도 되지만 그냥 저렇게 먼저 작성해서 굳이 적용하진 않았다.
+
+### 테스트
+
+테스트는 어떤 식으로 해야 효율적일까 생각해봤지만 크롬 확장프로그램을 테스트하는 툴은 따로 찾아보지 않았고, 굳이 테스트까지 적용해가면서 진행할 프로젝트는 아니라고 판단돼서 테스트가 필요하면 reload 를 반복해가며 테스트하기로 타협했다. 언젠가 하겠지..
+
+그래도 기본적인 빌드 테스트나 lint 같은건 circleci를 이용해서 깃허브 저장소에 커밋할 때 혹은 PR을 날릴 때마다 테스트하도록 설정파일을 작성해 뒀다. 오랜만에 circleci config 을 작성하려니까 조금 해맸지만, 나중에 분명 도움이 되겠지
+
+## 기능 구현 컨셉잡기
+
+### 사이트는 어떤식으로 막을까
+
+### 크롬 설정값 리엑트 State 화 시키기
+
+## 마치며
+
