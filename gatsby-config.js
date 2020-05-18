@@ -16,6 +16,7 @@ module.exports = {
       },
     ],
   },
+  pathPrefix: 'jaewoook',
   plugins: [
     '@narative/gatsby-theme-novela'
   ],
