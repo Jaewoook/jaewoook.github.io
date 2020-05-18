@@ -2,7 +2,7 @@
 
 Jaewoook's github blog repository.
 
-## TO-Do
+## To-Do
 
 - Google Analytics 추가하기
 - Photo Template 만들기
