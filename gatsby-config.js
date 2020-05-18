@@ -1,34 +1,22 @@
 module.exports = {
   siteMetadata: {
     title: `Jaewook's point of view`,
+    name: 'Jaewook Ahn',
+    author: 'Jaewook Ahn',
     description: `Post all about Jaewook's point of view. Write code, memorable moment, take photo, share lifestyle, experience.`,
-    author: `Jaewook Ahn <ajw4586@gmail.com>`,
+    siteUrl: 'https://jaewoook.github.io',
+    hero: {
+      heading: 'Point of view',
+      maxWidth: 720,
+    },
+    social: [
+      {
+        name: 'github',
+        url: 'https://github.com/Jaewoook',
+      },
+    ],
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    '@narative/gatsby-theme-novela'
   ],
 }
