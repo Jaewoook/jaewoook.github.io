@@ -1,19 +1,40 @@
 {
-  "name": "a",
+  "name": "jaewoook.github.io",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "author": "Jaewook Ahn <ajw4586@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "personal",
+    "blog"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jaewoook/jaewoook.github.io.git"
+  },
+  "homepage": "https://jaewoook.github.io",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "predeploy": "gatsby build --prefix-paths",
+    "deploy": "gh-pages -d public",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "@narative/gatsby-theme-novela": "^0.15.6",
+    "gatsby": "^2.13.41",
+    "gatsby-plugin-manifest": "^2.4.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.0.4",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^2.1.2"
-  },
-  "dependencies": {}
+    "gh-pages": "^2.2.0",
+    "prettier": "2.0.5"
+  }
 }

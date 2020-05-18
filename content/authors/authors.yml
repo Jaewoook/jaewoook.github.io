@@ -1,0 +1,7 @@
+- name: Jaewook Ahn
+  bio: A software engineer lives in Korea. Interested in web tech.
+  avatar: ./avatars/jaewook-avatar.JPG
+  featured: true
+  social:
+    - url: https://github.com/Jaewoook
+    - url: https://instagram.com/ahnjaewook
