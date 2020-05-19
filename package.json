@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@narative/gatsby-theme-novela": "^0.15.6",
-    "gatsby": "^2.13.41",
+    "gatsby": "^2.21.37",
     "gatsby-plugin-manifest": "^2.4.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
