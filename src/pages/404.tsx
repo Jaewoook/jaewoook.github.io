@@ -10,8 +10,8 @@ function NotFoundPage() {
     <Layout>
       <SEO />
       <Section>
-        <div style={{ marginTop: "100px" }}>
-          <Headings.h1>404: Page Not Found</Headings.h1>
+        <div style={{ marginTop: "100px", display: "flex", justifyContent: "center" }}>
+          <Headings.h1>404 Not Found</Headings.h1>
         </div>
       </Section>
     </Layout>
