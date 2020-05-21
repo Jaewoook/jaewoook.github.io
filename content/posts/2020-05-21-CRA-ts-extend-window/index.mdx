@@ -5,6 +5,12 @@ hero: ./images/cover.jpg
 date: 2020-05-21
 ---
 
+## TL;DR
+
+`src/react-app-env.d.ts` 파일에 `Window` 타입을 정의해서 쓰자.
+
+---
+
 타입스크립트를 사용하는 create-react-app 으로 만든 프로젝트에서 `window` object 를 확장해야 하는 경우가 꽤 많다. 하지만 까다로운 TS typechecker 는 `window` object에 우리가 사용하려는 `property`가 없다면서 컴파일도 안시켜준다.
 
 ![](./images/ts-error-msg.png)
