@@ -16,6 +16,7 @@ Jaewoook's github blog repository.
 - Hyper 사용기
 - Windows Subsystem for Linux
 - Dell XPS DBC Issue
+- CRA TS WIndow object extending
 
 ## Install Prequisite dependency
 
