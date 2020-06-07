@@ -3,7 +3,7 @@ module.exports = {
         title: `Jaewook's point of view`,
         name: 'Jaewook Ahn',
         description: `Post all about Jaewook's point of view. Write code, memorable moment, take photo, share lifestyle, experience.`,
-        siteUrl: 'https://jaewoook.github.io',
+        siteUrl: 'https://jaewook.me',
         hero: {
             heading: 'Point of view',
             maxWidth: 768,
@@ -18,11 +18,17 @@ module.exports = {
     pathPrefix: 'jaewoook',
     plugins: [
         {
+            resolve: 'gatsby-plugin-disqus',
+            options: {
+                shortname: 'Point of view',
+            },
+        },
+        {
             resolve: '@narative/gatsby-theme-novela',
             options: {
                 basePath: "/",
                 authorsPage: true,
-            }
+            },
         },
         {
             resolve: 'gatsby-plugin-manifest',
