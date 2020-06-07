@@ -20,7 +20,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-disqus',
             options: {
-                shortname: 'Point of view',
+                shortname: 'jaewook-ahns-logbase',
             },
         },
         {

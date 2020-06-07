@@ -55,8 +55,6 @@ const Article: Template = ({ pageContext, location }) => {
     identifier: article.id,
     title: article.title,
   };
-  console.log("Site Url", siteUrl);
-  console.log('disqus config', disqusConfig);
 
   useEffect(() => {
     const calculateBodySize = throttle(() => {
@@ -115,7 +113,9 @@ const Article: Template = ({ pageContext, location }) => {
           <FooterSpacer />
         </NextArticle>
       )}
-      <Disqus config={disqusConfig} />
+      <DisqusContainer>
+        <Disqus config={disqusConfig} />
+      </DisqusContainer>
     </Layout>
   );
 };
@@ -184,4 +184,8 @@ const FooterNext = styled.h3`
 
 const FooterSpacer = styled.div`
   margin-bottom: 65px;
+`;
+
+const DisqusContainer = styled(Section)`
+  display: block;
 `;
