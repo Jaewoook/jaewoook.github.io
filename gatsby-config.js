@@ -15,7 +15,6 @@ module.exports = {
             },
         ],
     },
-    pathPrefix: 'jaewoook',
     plugins: [
         {
             resolve: 'gatsby-plugin-disqus',
