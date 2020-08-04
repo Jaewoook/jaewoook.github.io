@@ -2413,12 +2413,7 @@
     unist-builder "2.0.3"
     unist-util-visit "2.0.3"
 
-"@mdx-js/react@^1.0.27":
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.5.tgz#70380f25209b62ef69349b7eef09fad7e1103824"
-  integrity sha512-y1Yu9baw3KokFrs7g5RxHpJNSU4e1zk/5bAJX94yVATglG5HyAL0lYMySU8YzebXNE+fJJMCx9CuiQHy2ezoew==
-
-"@mdx-js/react@^1.5.2":
+"@mdx-js/react@^1.0.27", "@mdx-js/react@^1.5.2":
   version "1.6.16"
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.6.16.tgz#538eb14473194d0b3c54020cb230e426174315cd"
   integrity sha512-+FhuSVOPo7+4fZaRwWuCSRUcZkJOkZu0rfAbBKvoCg1LWb1Td8Vzi0DTLORdSvgWNbU6+EL40HIgwTOs00x2Jw==
@@ -2460,10 +2455,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@narative/gatsby-theme-novela@^0.16.5":
-  version "0.16.5"
-  resolved "https://registry.yarnpkg.com/@narative/gatsby-theme-novela/-/gatsby-theme-novela-0.16.5.tgz#4fa31667b2871a276a315361532b094a1ee25c14"
-  integrity sha512-FkjPXg9iZRyYPZUvmqXuJmnMydUpxcjscCfuMBrhCsv6GpljXOyFAcm43lR5WwzYK9x5JHOXt7kSTAvB5LTcIQ==
+"@narative/gatsby-theme-novela@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@narative/gatsby-theme-novela/-/gatsby-theme-novela-0.17.0.tgz#eedd700fbd285daf2e645c5166ffe9df5968e3e7"
+  integrity sha512-Y+ipd3pl1Xrw2MnUphm3ZQGyCEhfr8Mu7iAeB/oBqCfgaguRRX1cf9KjtfZL0/i+wT+sOTK4g+UOnc1a6JeJ8w==
   dependencies:
     "@blocks/kit" "^0.0.28"
     "@emotion/core" "^10.0.14"
