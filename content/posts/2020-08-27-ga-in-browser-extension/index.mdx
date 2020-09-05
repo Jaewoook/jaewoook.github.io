@@ -1,0 +1,117 @@
+---
+title: 크롬 익스텐션에 구글 애널리틱스 적용하기
+date: 2020-09-05
+author: Jaewook Ahn
+slug: ga-in-browser-extension
+hero: ./images/hero.jpg
+---
+
+지난번 [주소검색 브라우저 익스텐션 개발기](https://jaewook.me/kor-address-extension-dev-log)라는 글에서 주소검색 익스텐션을 소개했었다.
+익스텐션을 배포한 후, 사소한 기능적인 보완, 버그 픽스, 디자인 개선 등의 작업을 하면서 1.0.5 버전까지 릴리즈를 했다.
+그러다 문득, 다른 사람들은 이 익스텐션을 어떻게 사용하고 있는지 호기심이 생겼다. 그래서 구글 애널리틱스를 적용해보면 알 수 있을거란 생각에 이 작업을 하게 됐다.
+물론 이미 인터넷에 있는 수 많은 글에서 구글 애널리틱스를 적용하고, 활용하는 방법에 대해 잘 설명하고 있다. 나도 다른 글들을 참고해가며 이 기능을 구현했지만 대부분의 글들은 **웹 사이트, 특히 쇼핑몰같은 상업 사이트**를 타겟으로 쓰여 있어서 익스텐션에 바로 적용하는 데 여러 문제점이 있었다. 이 글에서는 내가 겪은 문제점에 대해 중점적으로 다룰 것이다. 이 주제에 대해서는 딱히 한국어로 쓰여져 있는 글은 쉽게 찾을 수가 없어서 나와 비슷한 이유로 **익스텐션에 구글 애널리틱스를 적용해보려는 사람들**이 참고할 수 있었으면 좋겠다.
+
+참, 익스텐션 개발 스택은 **React(Create React App 기반) / TypeScript** 이다.
+
+## gtag.js vs. analytics.js 선택하기
+
+gtag.js 와 analytics.js 를 비교 설명해 놓은 글들은 많으니 익스텐션에 적용하는 관점에서만 비교해보려고 한다. 먼저 구글 애널리틱스 최신 가이드에서는 gtag.js 가 더 나중에 나온 분석 라이브러리이고, 가급적 gtag.js 를 적용하길 권장하고 있다. 문서를 잘 읽다보면 링크를 몇 번 타고 들어가서 analytics.js 를 설치하는 방법도 있긴 하는데, 둘은 근본적으로 설치하는 데에 차이가 있다. 먼저 설치 코드부터 보자.
+
+#### gtag.js 설치 코드
+
+```html
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
+```
+
+#### analytics.js 설치 코드
+
+```html
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+```
+
+결론부터 말하면 아무거나 써도 된다. 그런데 난 gtag.js 를 써야할 **특별한 이유가 없어서 analytics.js 를 썼다.** 일단 설치 코드는 공통적으로 브라우저 위에서 실행되게 되어있다. 그 말은 익스텐션에서는 content script나 background script 쪽에서는 쓰기 어려울 수 있다. (물론 찾아보면 방법은 있긴 하다.) 나는 다행이도 popup 기반의 익스텐션을 만들고 있었기 때문에 popup에 어떤식으로 붙일지 고민을 시작했다. 그리고 몇가지 머리아픈 사실을 알게 되는데, 첫번째는 CSP 라는 녀석이다.
+
+### CSP (Content Security Policy) 설정
+
+브라우저 익스텐션에는 보안상의 이유로, 여러 보안 정책들이 걸려 있다. 예를 들면, `eval()` 같은 함수 호출 금지, HTML `<script>` 태그에서 인라인 코드 실행 금지 등이 있는데, 우리가 주목해야 할 것은 구글 애널리틱스를 위한 **라이브러리 다운로드 url**이다. 왜냐면, 브라우저 보안 정책상 익스텐션은 XSS 공격을 방지하기 위해 신뢰할 수 있는 출처에서만 스크립트를 다운로드 할 수 있는데 바로 이 **신뢰할 수 있는 출처**를 CSP 정책에 설정해 줘야 구글 애널리틱스 분석 라이브러리를 다운로드 받을 수 있다. CSP에 대해서는 크롬 익스텐션 개발 문서에 잘 설명되어 있고, MDN에도 잘 설명되어 있지만, analytics.js 를 사용하기 위해서는 간단하게 아래 정책을 manifest.json에 추가하면 된다.
+
+```js
+{
+    ...
+    "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
+    ...
+}
+```
+
+*특별한 정책은 아니고, 기본 CSP 설정 + analytics.js 다운로드 origin을 허용하는 정책이다.*
+
+---
+
+## 라이브러리는 어느 위치에서 로드되게 해야 할까?
+
+별 거 아닐 수 있지만, 라이브러리 추가(로드) 우치에 대해서 좀 고민을 했다. 몇 가지 선택지가 있었는데, **리엑트 기반에서는 간단하게 [react-ga](https://github.com/react-ga/react-ga)라는 라이브러리를 이용**해서 React 내에서 로드하는 방법, **popup html 내에서 별도로 분리된 애널리틱스 코드** 로드하는 방법, **background script 를 이용**하는 방법 정도를 생각했었다. background script 를 이용하는 방법은 하다가 잘못된 방법이란걸 깨닫고 그만두긴 했지만, 결론적으로 나는 두번째 방법을 택해서 진행했다. 이유는, *"node dependency를 가급적 늘리고 싶지 않아서"* 인데 이건 취향 / 상황 차이이니 재량껏 선택하면 되겠다.
+
+하지만 나처럼 popup html에서 분석 라이브러리를 로딩하게 되면, 실질적인 비즈니스 로직이 있는 리엑트 코드 내에서 tracking 함수를 호출하기 위해 window object에 ga 함수를 추가해줘야 한다. 예전에 써놓은 [이 글](https://jaewook.me/create-react-app-typescript-window-object)을 참고해서 추가하면 된다.
+
+## 추가는 잘 된 것 같은데, 동작을 안하는 것 같은 느낌
+
+사실 이 부분에서 제일 시간을 많이 낭비했다. 구글링하고 문서를 제대로 안 읽어서 벌어진 일이지만. 개발하다 보면 (내 기준에서) 언제나 그랬듯 문제 하나 해결하려고 죄 없는 코드를 몇 번이고 뒤집어 엎었다. 테스트를 하는데 분석 라이브러리는 분명 로드 됐다고 나오는데 실제 익스텐션으로 패키지해서 테스트해보면 이벤트도 안 찍히고, 활성 사용자로도 잡히지 않았다. 분명 브라우저에서 팝업만 테스트할 때는 잘 됐는데 말이다. 원인은 크롬 익스텐션 페이지의 특별한 url 때문이었다. 기본적으로 url이 http(s) 이 아니면 추적을 하지 않게 설정되어 있는데 이게 문제였다. (익스텐션의 url은 `chrome-extension://` 같은 형식이다) 그래서 다음 코드를 이용해 해당 문제를 해결할 수 있었다.
+
+```ts
+window.ga("set", "checkProtocolTask", null);
+```
+
+여러 과정을 거치며 추적 내용이 구글 애널리틱스로 전송되는데, checkProtocolTask 에서 계속 걸러져서 분석 내용이 보내지지 않는 것이었다.
+
+## 프로덕션에서만 추적 활성화 하기
+
+이제 겪었던 거의 모든 트러블슈팅에 대해 설명했는데, 마지막으로 개발할 때 의도하지 않게 추적되는 것을 방지하기 위해 (의미있는 데이터가 아니기에) 프로덕션 모드가 아니면 GA를 비활성화 시켰다.
+
+```ts
+if (isProduction()) {
+    window.ga("create", "TRACKING_ID", "auto");
+    window.ga("set", "checkProtocolTask", null);
+    window.ga("send", "pageview", "/");
+} else {
+    console.info("Google Analytics disabled because runtime does not running in production.");
+    window.ga = function() {};
+}
+```
+
+익스텐션의 개발 모드를 얻어오는 방법은 여러 가지가 있겠지만, 난 CRA 의 `REACT_APP_` 환경 변수를 이용해 빌드 타임에 해당 빌드가 production인지, development인지 명시적으로 알려준다. 아래와 같은 방식으로 말이다. [(참고 문서)](https://create-react-app.dev/docs/adding-custom-environment-variables/)
+
+```js
+{
+    "script": {
+        "build": "cross-env REACT_APP_ENV=production react-scripts build",
+        "dev": "cross-env REACT_APP_ENV=development react-scripts start",
+    }
+}
+```
+
+```ts
+//  inject NODE_ENV variable into window object
+window.__ENV__ = {
+    NODE_ENV: process.env.REACT_APP_ENV as string,
+};
+```
+
+마지막으로, GA를 비활성화해서 발생할 수 있는 오류를 방지하기 위해, `ga()` 를 stub function 으로 대체해주니 문제 없이 작동하는 모습을 볼 수 있었다. 이제 구글 애널리틱스를 익스텐션에 성공적으로 적용했다!
