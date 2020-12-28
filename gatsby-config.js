@@ -34,7 +34,7 @@ module.exports = {
             options: {
                 name: 'Jaewook\'s point of view',
                 short_name: 'Jaewook Ahn\'s blog',
-                short_url: '/',
+                start_url: '/',
                 background_color: `#fff`,
                 theme_color: `#fff`,
                 display: `standalone`,
