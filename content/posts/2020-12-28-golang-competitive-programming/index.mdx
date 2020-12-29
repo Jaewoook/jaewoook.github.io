@@ -15,7 +15,7 @@ fmt 패키지의 `Print()`, `Scan()` 대신 **bufio** 패키지의 **`Reader.rea
 
 백준 온라인 저지나 Codeforces 같은 사이트에서 알고리즘 문제를 풀 때, 혹은 알고리즘 대회 등을 준비한다면, Competitive Programming을 위해 빠른 입출력을 해야 한다. 최근에 Go를 이용해 알고리즘 문제를 풀기 시작해서 간단하게 Go에서 빠른 입출력 하는 방법을 정리해볼까 한다.
 
-## fmt Scan, Print 에 buffer 적용
+## fmt Scan, Print에 buffer 적용
 
 Go 내장 패키지인 fmt는 입출력을 위한 여러 함수들이 정의되어 있다. 하지만 기본적으로 fmt의 입출력 함수들은 buffer를 이용하고 있지 않기 때문에 입출력 속도가 상당히 느리다. 그래서 bufio 패키지를 **`Fprint`**, **`Fscan`** 함수와 같이 이용해 입출력을 하면 buffer가 적용된 입출력이 가능해진다.
 
