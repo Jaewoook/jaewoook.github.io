@@ -1,19 +1,57 @@
 ---
-title: Golang Competitive Programming을 위한 빠른 입출력하기
+title: Go Competitive Programming을 위한 빠른 입출력하기
 date: 2020-12-28
 author: Jaewook Ahn
+hero: ./images/hero.jpg
 slug: golang-fast-io-for-competitive-programming
-secret: true
+excerpt: Go에서 빠른 입출력을 하는 방법을 알아보자
 ---
 
 ## TL;DR
 
+fmt 패캐지의 `Print()`, `Scan()` 대신 **bufio** 패키지의 **`Reader.readLine()`**, **`Writer.writeString()`**을 쓰자.
 
 ---
 
-## fmt Scan, Print 에 Buffer 적용
+백준 온라인 저지나 Codeforces 같은 사이트에서 알고리즘 문제를 풀 때, 혹은 알고리즘 대회 등을 준비한다면, Competitive Programming을 위해 빠른 입출력을 해야 한다. 최근에 Go를 이용해 알고리즘 문제를 풀기 시작해서 간단하게 Go에서 빠른 입출력 하는 방법을 정리해볼까 한다.
+
+## fmt Scan, Print 에 buffer 적용
+
+Go 내장 패키지인 fmt는 입출력을 위한 여러 함수들이 정의되어 있다. 하지만 기본적으로 fmt의 입출력 함수들은 buffer를 이용하고 있지 않기 때문에 입출력 속도가 상당히 느리다. 그래서 bufio 패키지를 **`Fprint`**, **`Fscan`** 함수와 같이 이용해 입출력을 하면 buffer가 적용된 입출력이 가능해진다.
+
+```go
+reader := bufio.NewReader(os.Stdin)
+writer := bufio.NewWriter(os.Stdout)
+defer writer.Flush()
+
+fmt.Fscan(reader, &a, &b)
+fmt.Fprint(writer, a + b)
+```
+
+*buffered write를 사용하면 **반드시 `Flush()`**를 호출해줘야 한다.*
+
+위와 같이 bufio로부터 Reader, Writer를 얻어와서 입출력을 하게 되면, 단순히 **`fmt.Print()`**, **`fmt.Scan()`** 하는 것보다 속도가 상당히 빨라진다. 아래는 위 방법으로 백준 15552 빠른 A+B 문제를 풀었을 때의 결과다. (Go 1.15.3 기준 최대 수행시간 964ms 소요)
+
+![go-fast-io-with-fmt](./images/go-fast-io-with-fmt.png)
 
 ## buffer read / write 직접 하기
 
-## Sample code
+하지만 여전히 입출력이 엄청 빠르지 않은 것 같아서, IO에서 조금이라도 시간을 더 줄일 수 있는 방법이 있을까 하고 더 찾아봈다. 그리고 아예 fmt 패키지를 사용하지 않고 입출력을 하게 되면 훨씬 빠른 입출력이 가능하다는 걸 알았다.
 
+```go
+bytes, _, _ := reader.ReadLine()
+line := string(line)
+
+nums := strings.Fields(line)
+a, _ := strconv.Atoi(nums[0])
+b, _ := strconv.Atoi(nums[1])
+writer.WriteString(strconv.Itoa(a + b) + "\n")
+```
+
+*일반적인 경우에서는 에러 처리를 해줘야 하지만, 문제를 풀 때는 문제의 입력이 항상 보장되어 있다고 가정하고 따로 에러처리를 하지 않았다. 그러므로 필요없는 값들은 다 생략했다.*
+
+한 줄을 입력받아 숫자 두개를 얻어온 다음, 두 수를 더한 값을 출력하는 간단한 코드이지만 얻어온 bytes로부터 string을 만들어야 하고, 공백을 기준으로 문자열을 tokenize하고 그걸 다시 숫자로 변환해야 하는 귀찮은 작업을 코드로 작성해야 한다. 하지만 위와 같은 방법으로 입출력을 하게 되면 fmt 패키지를 이용했을 때와 두배 이상의 시간 차이를 보여준다.
+
+![fast-io-with-buffer](./images/fast-io-with-buffer.png)
+
+입력과 출력이 엄청나게 복잡하지 않다면, 귀찮긴 해도 이런 방법도 Competitive Programming을 위해서 써볼만하다고 생각한다. 이 방법들보다 더 빠르게 처리하려면 bytes를 직접 다루면 되지만, 어차피 buffered IO 가 빠른 입출력의 핵심이므로 이정도면 충분히 빠른 입출력이라고 생각한다.
