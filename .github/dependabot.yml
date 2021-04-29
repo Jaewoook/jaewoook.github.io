@@ -1,0 +1,34 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: gatsby
+    versions:
+    - 2.31.1
+    - 2.32.0
+    - 2.32.10
+    - 2.32.11
+    - 2.32.2
+    - 2.32.3
+    - 2.32.4
+    - 2.32.6
+    - 2.32.8
+    - 2.32.9
+    - 3.0.2
+  - dependency-name: gatsby-plugin-manifest
+    versions:
+    - 2.11.0
+    - 2.12.0
+    - 2.12.1
+  - dependency-name: "@narative/gatsby-theme-novela"
+    versions:
+    - 0.18.5
+    - 0.18.6
+  - dependency-name: gatsby-plugin-google-analytics
+    versions:
+    - 2.10.0
