@@ -32,11 +32,12 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-manifest',
             options: {
-                name: 'Jaewook\'s point of view',
-                short_name: 'Jaewook Ahn\'s blog',
+                name: 'Jaewook\'s point of view | Blog',
+                short_name: 'Jaewook\'s point of view',
                 start_url: '/',
                 background_color: `#fff`,
                 theme_color: `#fff`,
+                lang: 'ko',
                 display: `standalone`,
                 icon: 'src/images/favicon.png'
             },
