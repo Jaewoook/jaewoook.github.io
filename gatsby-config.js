@@ -23,13 +23,6 @@ module.exports = {
             },
         },
         {
-            resolve: '@narative/gatsby-theme-novela',
-            options: {
-                basePath: "/",
-                authorsPage: true,
-            },
-        },
-        {
             resolve: 'gatsby-plugin-manifest',
             options: {
                 name: 'Jaewook\'s point of view | Blog',
@@ -43,7 +36,7 @@ module.exports = {
             },
         },
         {
-            resolve: 'gatsby-plugin-google-analytics',
+            resolve: 'gatsby-plugin-google-gtag',
             options: {
                 trackingId: 'UA-108816190-1',
             },
