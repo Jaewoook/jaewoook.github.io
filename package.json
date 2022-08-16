@@ -1,7 +1,6 @@
 {
   "name": "jaewoook.github.io",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "1.0.0",
   "author": "Jaewook Ahn <ajw4586@gmail.com>",
   "license": "MIT",
@@ -27,17 +26,15 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.18.4",
-    "gatsby": "^2.24.27",
-    "gatsby-plugin-disqus": "^1.2.0",
-    "gatsby-plugin-google-analytics": "^2.3.13",
-    "gatsby-plugin-manifest": "^2.9.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-icons": "^4.3.1"
+    "gatsby": "^4.20.0",
+    "gatsby-plugin-disqus": "^1.2.4",
+    "gatsby-plugin-google-gtag": "^4.20.0",
+    "gatsby-plugin-manifest": "^4.20.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0",
     "prettier": "2.2.1"
   }
 }
