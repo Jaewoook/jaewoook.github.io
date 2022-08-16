@@ -1,13 +1,10 @@
 module.exports = {
     siteMetadata: {
         title: `Jaewook's point of view`,
+        shortTitle: 'point of view',
         name: 'Jaewook Ahn',
         description: `Post all about Jaewook's point of view. Write code, memorable moment, take photo, share lifestyle, experience.`,
         siteUrl: 'https://jaewook.me',
-        hero: {
-            heading: 'Point of view',
-            maxWidth: 768,
-        },
         social: [
             {
                 name: 'github',
@@ -16,6 +13,13 @@ module.exports = {
         ],
     },
     plugins: [
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: 'content',
+                path: `${__dirname}/content/`
+            }
+        },
         {
             resolve: 'gatsby-plugin-disqus',
             options: {
