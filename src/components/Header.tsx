@@ -2,7 +2,7 @@
  * External modules
  */
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import { navigate, graphql, useStaticQuery } from "gatsby";
 
 const headerQuery = graphql`
 query {
@@ -18,9 +18,13 @@ export const Header = () => {
     const queryResult = useStaticQuery(headerQuery);
     const title = queryResult?.site?.siteMetadata?.shortTitle ?? '';
 
+    const handleTitleClick = () => {
+        navigate("/");
+    }
+
     return (
-        <header className="px-3 py-3">
-            <h1 className="text-3xl font-medium">{title}</h1>
+        <header className="container mx-auto px-3 py-3 md:py-10">
+            <h1 className="w-fit text-3xl font-medium cursor-pointer" onClick={handleTitleClick}>{title}</h1>
         </header>
     );
 };
