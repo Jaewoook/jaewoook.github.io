@@ -1,4 +1,7 @@
-module.exports = {
+import remarkGFM from "remark-gfm";
+import type { GatsbyConfig } from "gatsby";
+
+const config: GatsbyConfig = {
     siteMetadata: {
         title: `Jaewook's point of view`,
         shortTitle: 'point of view',
@@ -16,9 +19,23 @@ module.exports = {
         {
             resolve: 'gatsby-source-filesystem',
             options: {
-                name: 'content',
-                path: `${__dirname}/content/`
-            }
+                name: 'posts',
+                path: `${__dirname}/content/posts`,
+            },
+        },
+        // {
+        //     resolve: 'gatsby-plugin-page-creator',
+        //     options: {
+        //         path: `${__dirname}/content/posts`,
+        //     },
+        // },
+        {
+            resolve: 'gatsby-plugin-mdx',
+            options: {
+                mdxOptions: {
+                    remarkPlugins: [remarkGFM],
+                },
+            },
         },
         {
             resolve: 'gatsby-plugin-disqus',
@@ -36,7 +53,7 @@ module.exports = {
                 theme_color: `#fff`,
                 lang: 'ko',
                 display: `standalone`,
-                icon: 'src/images/favicon.png'
+                icon: 'src/images/favicon.png',
             },
         },
         {
@@ -47,3 +64,5 @@ module.exports = {
         },
     ],
 }
+
+export default config;
