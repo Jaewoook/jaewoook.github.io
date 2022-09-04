@@ -17,21 +17,25 @@
   "scripts": {
     "build": "gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "yarn develop",
+    "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "predeploy": "gatsby build --prefix-paths",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "gatsby": "^4.20.0",
+    "@mdx-js/react": "^2.1.3",
+    "gatsby": "^4.22.0",
     "gatsby-plugin-disqus": "^1.2.4",
-    "gatsby-plugin-google-gtag": "^4.20.0",
-    "gatsby-plugin-manifest": "^4.20.0",
-    "gatsby-source-filesystem": "^4.21.0",
+    "gatsby-plugin-google-gtag": "^4.22.0",
+    "gatsby-plugin-manifest": "^4.22.0",
+    "gatsby-plugin-mdx": "^4.1.0",
+    "gatsby-source-filesystem": "^4.22.0",
+    "gatsby-transformer-remark": "^5.21.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
