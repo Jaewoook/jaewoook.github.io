@@ -5,9 +5,18 @@
  */
 
 // You can delete this file if you're not using it
+
+/**
+ * External modules
+ */
 import React from "react";
+import type { GatsbySSR } from "gatsby";
+
+/**
+ * Internal modules
+ */
 import Layout from "./src/components/Layout";
 
-export const wrapPageElement = ({ element, props }) => {
+export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({ element, props }) => {
     return <Layout {...props}>{element}</Layout>
 };
