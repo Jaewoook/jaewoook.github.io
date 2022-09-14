@@ -6,6 +6,7 @@ query getSiteMetadata {
         siteMetadata {
             name
             siteUrl
+            githubUrl
             title
             description
         }
