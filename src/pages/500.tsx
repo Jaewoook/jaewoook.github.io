@@ -2,25 +2,15 @@
  * External modules
  */
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 
 /**
 * Internal modules
 */
 import { Button } from "../components/Button";
-
-const query = graphql`
-query {
-    site {
-        siteMetadata {
-            siteUrl
-        }
-    }
-}
-`;
+import { useSiteMetadata } from "../hooks/useSiteMetadata";
 
 const ErrorPage = () => {
-    const queryResult = useStaticQuery(query);
+    const queryResult = useSiteMetadata()
 
     return (
         <div className="mt-32 mb-10 flex flex-col items-center justify-center">
