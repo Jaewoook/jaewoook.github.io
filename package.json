@@ -42,11 +42,13 @@
     "react-icons": "^4.4.0",
     "remark-gfm": "^3.0.1",
     "styled-components": "^5.3.5",
+    "styled-system": "^5.1.5",
     "twin.macro": "^2.8.2"
   },
   "devDependencies": {
     "@types/node": "^18.7.14",
     "@types/styled-components": "^5.1.26",
+    "@types/styled-system": "^5.1.16",
     "autoprefixer": "^10.4.8",
     "babel-plugin-styled-components": "^2.0.7",
     "cssnano": "^5.1.13",

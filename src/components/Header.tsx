@@ -1,7 +1,7 @@
 /**
  * External modules
  */
-import React from "react";
+import React, { useCallback } from "react";
 import { navigate } from "gatsby";
 import { AiFillGithub } from "react-icons/ai";
 import { BiCodeCurly } from "react-icons/bi";
@@ -35,10 +35,9 @@ const NavItem = (props: NavItemProps) => {
 
 export const Header = () => {
   const siteMetadata = useSiteMetadata();
-
-  const handleTitleClick = () => {
+  const handleTitleClick = useCallback(() => {
     navigate("/");
-  };
+  }, []);
 
   return (
     <HeaderWrapper className="container mx-auto px-3 py-4 flex items-baseline">
