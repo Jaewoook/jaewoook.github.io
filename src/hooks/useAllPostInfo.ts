@@ -13,6 +13,11 @@ const query = graphql`
           title
           slug
           secret
+          hero {
+            childImageSharp {
+              gatsbyImageData(width: 400 placeholder: BLURRED)
+            }
+          }
         }
       }
     }
