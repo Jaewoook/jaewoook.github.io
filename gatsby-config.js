@@ -4,6 +4,7 @@ const siteMetadata = {
   description: `Post all about Jaewook's point of view. Write code, memorable moment, take photo, share lifestyle, experience.`,
   siteUrl: "https://jaewook.me",
   githubUrl: "https://github.com/Jaewoook",
+  portfolioUrl: "https://portfolio.jaewook.me",
 };
 
 const config = {
