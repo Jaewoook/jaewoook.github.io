@@ -5,6 +5,7 @@ import React from "react";
 import { navigate } from "gatsby";
 import { AiFillGithub } from "react-icons/ai";
 import { BiCodeCurly } from "react-icons/bi";
+import styled from "styled-components";
 
 /**
  * Internal modyles
@@ -16,6 +17,12 @@ interface NavItemProps {
   label: string;
   icon: React.ReactNode;
 }
+
+const HeaderWrapper = styled.header`
+  border-bottom-width: 2px;
+  border-image: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(212,212,216,1) 50%, rgba(255,255,255,1) 100%);
+  border-image-slice: 1;
+`;
 
 const NavItem = (props: NavItemProps) => {
   return (
@@ -34,7 +41,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="container mx-auto px-3 py-4 flex items-baseline border-b-zinc-300 border-b-2">
+    <HeaderWrapper className="container mx-auto px-3 py-4 flex items-baseline">
       <h1 className="text-4xl font-medium cursor-pointer" onClick={handleTitleClick}>
         {siteMetadata?.title}
       </h1>
@@ -42,6 +49,6 @@ export const Header = () => {
         <NavItem url={siteMetadata?.portfolioUrl ?? ""} label="Portfolio" icon={<BiCodeCurly className="text-2xl" />} />
         <NavItem url={siteMetadata?.githubUrl ?? ""} label="GitHub" icon={<AiFillGithub className="text-2xl" />} />
       </nav>
-    </header>
+    </HeaderWrapper>
   );
 };

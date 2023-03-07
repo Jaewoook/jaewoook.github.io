@@ -2511,6 +2511,7 @@ type SiteSiteMetadata = {
   readonly description: Maybe<Scalars['String']>;
   readonly githubUrl: Maybe<Scalars['String']>;
   readonly name: Maybe<Scalars['String']>;
+  readonly portfolioUrl: Maybe<Scalars['String']>;
   readonly siteUrl: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
 };
@@ -2519,6 +2520,7 @@ type SiteSiteMetadataFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
   readonly githubUrl: InputMaybe<FieldSelectorEnum>;
   readonly name: InputMaybe<FieldSelectorEnum>;
+  readonly portfolioUrl: InputMaybe<FieldSelectorEnum>;
   readonly siteUrl: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
 };
@@ -2527,6 +2529,7 @@ type SiteSiteMetadataFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly githubUrl: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
+  readonly portfolioUrl: InputMaybe<StringQueryOperatorInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
@@ -2535,6 +2538,7 @@ type SiteSiteMetadataSortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
   readonly githubUrl: InputMaybe<SortOrderEnum>;
   readonly name: InputMaybe<SortOrderEnum>;
+  readonly portfolioUrl: InputMaybe<SortOrderEnum>;
   readonly siteUrl: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
 };
@@ -2584,7 +2588,7 @@ type WebPOptions = {
 type AllPostInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AllPostInfoQuery = { readonly allMdx: { readonly totalCount: number, readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly author: string | null, readonly date: string | null, readonly title: string | null, readonly slug: string | null, readonly secret: boolean | null } | null }> } };
+type AllPostInfoQuery = { readonly allMdx: { readonly totalCount: number, readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly author: string | null, readonly date: string | null, readonly title: string | null, readonly slug: string | null, readonly secret: boolean | null, readonly hero: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null }> } };
 
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
@@ -2622,7 +2626,7 @@ type GetPostByIdQuery = { readonly mdx: { readonly excerpt: string | null, reado
 type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type SiteMetadataQuery = { readonly site: { readonly siteMetadata: { readonly name: string | null, readonly siteUrl: string | null, readonly githubUrl: string | null, readonly title: string | null, readonly description: string | null } | null } | null };
+type SiteMetadataQuery = { readonly site: { readonly siteMetadata: { readonly name: string | null, readonly siteUrl: string | null, readonly githubUrl: string | null, readonly portfolioUrl: string | null, readonly title: string | null, readonly description: string | null } | null } | null };
 
 
 }
