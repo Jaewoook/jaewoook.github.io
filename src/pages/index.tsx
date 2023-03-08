@@ -15,7 +15,7 @@ const Index = () => {
 
   return (
     <div className="container mx-auto pt-6">
-      <section className="flex flex-wrap">
+      <section className="flex flex-wrap gap-4">
         {allPostInfo.nodes.map((node) => {
           return (
             <PostCard

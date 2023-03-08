@@ -2621,7 +2621,7 @@ type GetPostByIdQueryVariables = Exact<{
 }>;
 
 
-type GetPostByIdQuery = { readonly mdx: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly author: string | null, readonly secret: boolean | null, readonly hero: { readonly relativePath: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null };
+type GetPostByIdQuery = { readonly mdx: { readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly author: string | null, readonly secret: boolean | null, readonly hero: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null };
 
 type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
