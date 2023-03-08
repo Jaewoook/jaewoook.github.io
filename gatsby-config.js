@@ -61,7 +61,10 @@ const config = {
     {
       resolve: "gatsby-plugin-google-gtag",
       options: {
-        trackingId: "UA-108816190-1",
+        trackingIds: ["G-FQPC5W480F"],
+        pluginConfig: {
+          head: true,
+        },
       },
     },
   ],
