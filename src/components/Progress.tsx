@@ -12,7 +12,7 @@ import type { WidthProps } from "styled-system";
 
 const Wrapper = styled.div`
   position: sticky;
-  height: 4px;
+  height: 8px;
   bottom: 0;
   left: 0;
   right: 0;
