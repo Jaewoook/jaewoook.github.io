@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 const query = graphql`
   query AllPostInfo {
-    allMdx {
+    allMdx(sort: { frontmatter: { date: DESC } }) {
       totalCount
       nodes {
         id
