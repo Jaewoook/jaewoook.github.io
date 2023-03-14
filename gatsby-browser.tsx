@@ -10,13 +10,19 @@
  * External modules
  */
 import React from "react";
-import type { GatsbyBrowser } from "gatsby";
+import "./src/styles/syntax-highlight.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 
 /**
  * Internal modules
  */
 import "./src/styles/global.css";
 import Layout from "./src/components/Layout";
+
+/**
+ * Type modules
+ */
+import type { GatsbyBrowser } from "gatsby";
 
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({ element, props }) => {
     return <Layout {...props}>{element}</Layout>

@@ -39,6 +39,12 @@ const config = {
               maxWidth: 800,
             },
           },
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              showLineNumbers: true,
+            },
+          },
         ],
         mdxOptions: {
           remarkPlugins: [import("remark-gfm")],
