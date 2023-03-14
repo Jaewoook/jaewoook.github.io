@@ -10,7 +10,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
  * Internal modules
  */
 import * as Heading from "../components/typography/Heading";
-import { Code, Pre } from "../components/typography/Code";
+import * as List from "../components/typography/List";
+import { P } from "../components/typography/Paragraph";
 
 /**
  * Type modules
@@ -20,8 +21,9 @@ import type { PageProps } from "gatsby";
 const mdxComponents = {
   h1: Heading.H1,
   h2: Heading.H2,
-  code: Code,
-  pre: Pre,
+  ul: List.UL,
+  ol: List.OL,
+  p: P,
 };
 
 interface PageContext {
