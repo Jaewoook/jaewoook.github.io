@@ -16,7 +16,7 @@ export const H2 = styled.h2`
   font-size: 24px;
   line-height: 32px;
   font-weight: 500;
-  margin-top: 16px;
+  margin-top: 28px;
   margin-bottom: 8px;
 `;
 
@@ -25,7 +25,7 @@ export const H3 = styled.h3`
   font-size: 18px;
   line-height: 28px;
   font-weight: 500;
-  margin-top: 16px;
+  margin-top: 32px;
   margin-bottom: 8px;
 `;
 
