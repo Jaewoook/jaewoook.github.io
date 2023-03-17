@@ -9,6 +9,8 @@ export const H1 = styled.h1`
   font-size: 36px;
   line-height: 60px;
   font-weight: 600;
+  margin-top: 48px;
+  margin-bottom: 16px;
 `;
 
 export const H2 = styled.h2`
