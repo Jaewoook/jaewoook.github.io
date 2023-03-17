@@ -6,33 +6,32 @@ import styled from "styled-components";
 
 export const H1 = styled.h1`
   text-align: center;
-  font-size: 30px;
-  line-height: 36px;
-  font-weight: 500;
+  font-size: 36px;
+  line-height: 60px;
+  font-weight: 600;
 `;
 
 export const H2 = styled.h2`
   text-align: center;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 28px;
+  line-height: 52px;
   font-weight: 500;
   margin-top: 28px;
   margin-bottom: 8px;
 `;
 
 export const H3 = styled.h3`
-  /* text-align: center; */
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 24px;
+  line-height: 30px;
   font-weight: 500;
   margin-top: 32px;
   margin-bottom: 8px;
 `;
 
-// export const H1 = ({ children }: React.PropsWithChildren) => {
-//   return <h1 className="text-center text-xl">{children}</h1>
-// };
-
-// export const H2 = ({ children }: React.PropsWithChildren) => {
-//   return <h2 className="text-lg text-center">{children}</h2>
-// };
+export const H4 = styled.h4`
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  margin-top: 24px;
+  margin-bottom: 4px;
+`;
