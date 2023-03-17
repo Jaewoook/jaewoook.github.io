@@ -64,14 +64,10 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-    color: transparent;
-    /* background-image: none; */
-    background-clip: text;
-    border: 2px solid transparent;
-	border-radius: .125em;
-    border-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
-    border-image-slice: 1;
-	/* box-shadow: 1px 1px .2em -.1em black; */
+    color: #29323c;
+    background: #efefef;
+    border: 1px solid #29323c;
+	border-radius: .375em;
 	padding: .1em .45em .1em;
 	white-space: normal;
     margin: 0 0.2em;
