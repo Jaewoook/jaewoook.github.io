@@ -11,7 +11,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
  */
 import * as Heading from "../components/typography/Heading";
 import * as List from "../components/typography/List";
-import { P } from "../components/typography/Paragraph";
+import * as Paragraph from "../components/typography/Paragraph";
 
 /**
  * Type modules
@@ -25,7 +25,8 @@ const mdxComponents = {
   h4: Heading.H4,
   ul: List.UL,
   ol: List.OL,
-  p: P,
+  p: Paragraph.P,
+  blockquote: Paragraph.BlockQuote,
 };
 
 interface PageContext {
