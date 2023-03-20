@@ -10,6 +10,8 @@ const query = graphql`
         frontmatter {
           author
           date(formatString: "DD MMMM, YYYY")
+          category
+          tags
           title
           slug
           secret
