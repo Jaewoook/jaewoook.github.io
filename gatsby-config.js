@@ -62,7 +62,7 @@ const config = {
     {
       resolve: "gatsby-plugin-offline",
       options: {
-        precachePages: ["/", "/*"]
+        precachePages: ["/*"]
       }
     },
     {
