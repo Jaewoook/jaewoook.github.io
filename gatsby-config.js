@@ -58,6 +58,13 @@ const config = {
         path: `${__dirname}/content/posts`,
       },
     },
+    "gatsby-plugin-catch-links",
+    {
+      resolve: "gatsby-plugin-offline",
+      options: {
+        precachePages: ["/", "/*"]
+      }
+    },
     {
       resolve: "gatsby-plugin-disqus",
       options: {
