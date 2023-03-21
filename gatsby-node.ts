@@ -44,7 +44,7 @@ export const createPages = async ({
     return;
   }
 
-  const PostComponent = path.resolve("src/pages/Post.tsx");
+  const PostComponent = path.resolve("src/templates/Post.tsx");
   queryResults.data?.allMdx.nodes.forEach((node) => {
     if (!node?.frontmatter?.slug) return;
 

@@ -10,7 +10,8 @@
         "moduleResolution": "Node",
         "skipLibCheck": true,
         "strict": true,
-        "target": "ESNext"
+        "target": "ES6",
+        "noEmit": true
     },
     "include": [
         "src/**/*",
