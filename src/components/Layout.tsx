@@ -15,7 +15,6 @@ const Wrapper = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); */
 `;
 
 const Layout = (props: React.PropsWithChildren) => {

@@ -10,13 +10,24 @@
  * External modules
  */
 import React from "react";
-import type { GatsbySSR } from "gatsby";
+import { RecoilRoot } from "recoil";
 
 /**
  * Internal modules
  */
 import Layout from "./src/components/Layout";
 
+/**
+ * Type modules
+ */
+import type { GatsbySSR } from "gatsby";
+
 export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({ element, props }) => {
-    return <Layout {...props}>{element}</Layout>
+  return (
+    <RecoilRoot>
+      <Layout {...props}>
+        {element}
+      </Layout>
+    </RecoilRoot>
+  );
 };
