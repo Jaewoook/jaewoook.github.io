@@ -1,7 +1,6 @@
 {
   "name": "jaewoook.github.io",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "1.0.0",
   "author": "Jaewook Ahn <ajw4586@gmail.com>",
   "license": "MIT",
@@ -17,25 +16,53 @@
   "homepage": "https://jaewoook.github.io",
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "yarn develop",
+    "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "predeploy": "gatsby build --prefix-paths",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "type-check": "tsc"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "^0.18.4",
-    "gatsby": "^2.24.27",
-    "gatsby-plugin-disqus": "^1.2.0",
-    "gatsby-plugin-google-analytics": "^2.3.13",
-    "gatsby-plugin-manifest": "^2.9.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-icons": "^4.3.1"
+    "@mdx-js/react": "^2.1.3",
+    "gatsby": "^5.7.0",
+    "gatsby-plugin-catch-links": "^5.7.0",
+    "gatsby-plugin-disqus": "1.2.3",
+    "gatsby-plugin-google-gtag": "^5.7.0",
+    "gatsby-plugin-image": "^3.7.0",
+    "gatsby-plugin-manifest": "^5.7.0",
+    "gatsby-plugin-mdx": "^5.7.0",
+    "gatsby-plugin-offline": "^6.7.0",
+    "gatsby-plugin-postcss": "^6.8.0",
+    "gatsby-plugin-sharp": "^5.7.0",
+    "gatsby-plugin-styled-components": "^6.7.0",
+    "gatsby-remark-images": "^7.7.0",
+    "gatsby-remark-prismjs": "^7.7.0",
+    "gatsby-source-filesystem": "^5.7.0",
+    "gatsby-transformer-remark": "^6.7.0",
+    "gatsby-transformer-sharp": "^5.7.0",
+    "prismjs": "^1.29.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "recoil": "^0.7.7",
+    "remark-gfm": "^3.0.1",
+    "styled-components": "^5.3.5",
+    "styled-system": "^5.1.5",
+    "twin.macro": "^3.1.0"
   },
   "devDependencies": {
-    "prettier": "2.2.1"
+    "@types/node": "^18.7.14",
+    "@types/styled-components": "^5.1.26",
+    "@types/styled-system": "^5.1.16",
+    "autoprefixer": "^10.4.8",
+    "babel-plugin-styled-components": "^2.0.7",
+    "cssnano": "^5.1.13",
+    "eslint": "^8.36.0",
+    "postcss": "^8.4.16",
+    "prettier": "2.2.1",
+    "tailwindcss": "^3.1.8",
+    "typescript": "^4.8.2"
   }
 }

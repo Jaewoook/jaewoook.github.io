@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react-jsx",
+        "lib": ["DOM", "ESNext"],
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ES6",
+        "noEmit": true
+    },
+    "include": [
+        "src/**/*",
+        "./gatsby-browser.*",
+        "./gatsby-node.*",
+        "./gatsby-ssr.*",
+        "./gatsby-ssr.*",
+    ]
+}
