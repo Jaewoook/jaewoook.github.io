@@ -3,23 +3,23 @@
  */
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
-import { width } from "styled-system";
-
-/**
- * Type modules
- */
-import type { WidthProps } from "styled-system";
 
 const Wrapper = styled.div`
   position: fixed;
-  height: 8px;
+  height: 6px;
   bottom: 0;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: flex-start;
+  z-index: 10;
 `;
 
-const Indicator = styled.div<WidthProps>`
-  ${width}
+const Indicator = styled.div<{ w: string; }>`
+  width: 100%;
+  margin-left: -100%;
+  transform: translateX(${({ w }) => w});
+  transition: transform 0.25s ease-out;
   height: 100%;
   mask: linear-gradient(#fff 0 0);
   ::before {
@@ -50,7 +50,7 @@ export const Progress = () => {
 
   return (
     <Wrapper>
-      <Indicator width={`${percent}%`} />
+      <Indicator w={`${percent}%`} />
     </Wrapper>
   );
 };
