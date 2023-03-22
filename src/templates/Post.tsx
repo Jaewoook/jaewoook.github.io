@@ -20,6 +20,7 @@ import * as Paragraph from "../components/typography/Paragraph";
 import type { PageProps } from "gatsby";
 
 const TagSpan = styled.span`
+  color: rgb(82 82 91);
   font-weight: 300;
   margin-right: 8px;
   padding: 8px 12px;
@@ -100,11 +101,11 @@ const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContex
   return (
     <div className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
       <section className="flex flex-col items-center py-6 px-4">
-        <h1 className="text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
-        <div className="mt-4 flex flex-row">
-          <h3>{data.mdx?.frontmatter?.author}</h3>
+        <h1 className="text-zinc-900 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
+        <div className="mt-4 flex flex-row text-zinc-700">
+          <p>{data.mdx?.frontmatter?.author}</p>
           <span className="mx-3">⸺</span>
-          <h3>{data.mdx?.frontmatter?.date}</h3>
+          <p>{data.mdx?.frontmatter?.date}</p>
         </div>
         {heroImage ? (
           <div className="mt-8 shadow-slate-400 shadow-lg">
