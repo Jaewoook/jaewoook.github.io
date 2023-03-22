@@ -17,6 +17,10 @@ const CategoryWrapper = styled.div<SpaceProps>`
   display: flex;
   align-items: center;
   overflow-x: scroll;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const SerifSpan = styled.span`
