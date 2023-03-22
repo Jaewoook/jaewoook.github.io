@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   right: 0;
   display: flex;
   align-items: flex-start;
+  z-index: 10;
 `;
 
 const Indicator = styled.div<{ w: string; }>`
