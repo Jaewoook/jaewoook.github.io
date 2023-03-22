@@ -20,6 +20,7 @@ import * as Paragraph from "../components/typography/Paragraph";
 import type { PageProps } from "gatsby";
 
 const TagSpan = styled.span`
+  color: rgb(82 82 91);
   font-weight: 300;
   margin-right: 8px;
   padding: 8px 12px;
@@ -50,7 +51,7 @@ const Tags = (props: TagsProps) => {
   if (!props.tags) return null;
 
   return (
-    <section className="max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center text-zinc-600">
+    <section className="max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center">
       {props.tags.map((tag) => (
         <TagSpan key={tag} className="max-sm:mt-2">{tag}</TagSpan>
       ))}
@@ -100,7 +101,7 @@ const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContex
   return (
     <div className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
       <section className="flex flex-col items-center py-6 px-4">
-        <h1 className="text-4xl leading-snug text-zinc-900 font-semibold">{data.mdx?.frontmatter?.title}</h1>
+        <h1 className="text-zinc-900 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
         <div className="mt-4 flex flex-row text-zinc-700">
           <p>{data.mdx?.frontmatter?.author}</p>
           <span className="mx-3">⸺</span>
