@@ -69,7 +69,7 @@ const config = {
     {
       resolve: "gatsby-plugin-disqus",
       options: {
-        shortname: "jaewook-ahns-logbase",
+        shortname: "point of view",
       },
     },
     {
