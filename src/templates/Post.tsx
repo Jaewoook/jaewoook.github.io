@@ -52,7 +52,7 @@ const Tags = (props: TagsProps) => {
   return (
     <section className="max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center">
       {props.tags.map((tag) => (
-        <TagSpan className="max-sm:mt-2">{tag}</TagSpan>
+        <TagSpan key={tag} className="max-sm:mt-2">{tag}</TagSpan>
       ))}
     </section>
   )
@@ -98,7 +98,7 @@ export const query = graphql`
 const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContext>) => {
   const heroImage = getImage(data.mdx?.frontmatter?.hero?.childImageSharp?.gatsbyImageData ?? null);
   return (
-    <div className="max-w-3xl mx-auto pt-12">
+    <div className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
       <section className="flex flex-col items-center py-6 px-4">
         <h1 className="text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
         <div className="mt-4 flex flex-row">
