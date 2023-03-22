@@ -12,7 +12,7 @@ import { Header } from "./Header";
 import { Progress } from "./Progress";
 
 const Wrapper = styled.div`
-  min-height: 100vh;
+  min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
 `;
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 const Layout = (props: React.PropsWithChildren) => {
   const { children } = props;
   return (
-    <Wrapper className="min-h-screen flex flex-col bg-neutral-50">
+    <Wrapper className="flex flex-col bg-neutral-50">
       <Header />
       <main className="flex-1 md:container md:mx-auto">{children}</main>
       <Footer />
