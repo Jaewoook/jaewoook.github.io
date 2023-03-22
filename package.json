@@ -21,12 +21,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "predeploy": "gatsby build --prefix-paths",
-<<<<<<< HEAD
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "type-check": "tsc"
-=======
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
->>>>>>> master
   },
   "dependencies": {
     "@mdx-js/react": "^2.1.3",
@@ -57,7 +53,6 @@
     "twin.macro": "^3.1.0"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@types/node": "^18.7.14",
     "@types/styled-components": "^5.1.26",
     "@types/styled-system": "^5.1.16",
@@ -69,8 +64,5 @@
     "prettier": "2.2.1",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.2"
-=======
-    "prettier": "2.2.1"
->>>>>>> master
   }
 }
