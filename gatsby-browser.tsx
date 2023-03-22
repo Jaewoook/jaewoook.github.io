@@ -11,13 +11,13 @@
  */
 import React from "react";
 import { RecoilRoot } from "recoil";
-import "./src/styles/syntax-highlight.css";
 // import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 
 /**
  * Internal modules
  */
 import "./src/styles/global.css";
+import "./src/styles/syntax-highlight.css";
 import Layout from "./src/components/Layout";
 
 /**
