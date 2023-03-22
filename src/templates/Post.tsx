@@ -5,6 +5,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import styled from "styled-components";
 
 /**
  * Internal modules
@@ -17,6 +18,45 @@ import * as Paragraph from "../components/typography/Paragraph";
  * Type modules
  */
 import type { PageProps } from "gatsby";
+
+const TagSpan = styled.span`
+  font-weight: 300;
+  margin-right: 8px;
+  padding: 8px 12px;
+  position: relative;
+  z-index: 0;
+
+  ::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 1px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #9c20aa, #fb3570);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+`;
+
+interface TagsProps {
+  tags: Readonly<(string | null)[] | null | undefined>;
+}
+
+const Tags = (props: TagsProps) => {
+  if (!props.tags) return null;
+
+  return (
+    <section className="max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center">
+      {props.tags.map((tag) => (
+        <TagSpan className="max-sm:mt-2">{tag}</TagSpan>
+      ))}
+    </section>
+  )
+};
 
 const mdxComponents = {
   h1: Heading.H1,
@@ -48,6 +88,8 @@ export const query = graphql`
           }
         }
         secret
+        category
+        tags
       }
     }
   }
@@ -58,7 +100,7 @@ const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContex
   return (
     <div className="max-w-3xl mx-auto pt-12">
       <section className="flex flex-col items-center py-6 px-4">
-        <h1 className="text-4xl font-semibold">{data.mdx?.frontmatter?.title}</h1>
+        <h1 className="text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
         <div className="mt-4 flex flex-row">
           <h3>{data.mdx?.frontmatter?.author}</h3>
           <span className="mx-3">⸺</span>
@@ -70,9 +112,10 @@ const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContex
           </div>
         ) : null}
       </section>
-      <article>
+      <article className="max-sm:px-4">
         <MDXProvider components={mdxComponents}>{children}</MDXProvider>
       </article>
+      <Tags tags={data.mdx?.frontmatter?.tags} />
     </div>
   );
 };
