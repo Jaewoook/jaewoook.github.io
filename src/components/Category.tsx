@@ -26,6 +26,7 @@ const CategoryWrapper = styled.div<SpaceProps>`
 const SerifSpan = styled.span`
   font-family: "Noto Serif KR", sans-serif;
   font-weight: 300;
+  font-size: 12px;
 `;
 
 interface CategoryItemProps {
@@ -38,7 +39,7 @@ const CategoryItem = (props: CategoryItemProps) => {
   const { children, onClick, selected, ...styles } = props;
   return (
     <div
-      className={"border rounded-2xl cursor-pointer px-6 py-1 transition-all hover:border-black " + (selected ? "bg-black text-white" : "bg-white text-black")}
+      className={"border rounded-2xl cursor-pointer px-6 py-1 transition-all hover:border-zinc-700 " + (selected ? "bg-zinc-900 text-white" : "bg-white text-zinc-700")}
       onClick={onClick}
       {...styles}
     >

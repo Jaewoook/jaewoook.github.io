@@ -19,7 +19,7 @@ interface NavItemProps {
 }
 
 const HeaderWrapper = styled.header`
-  border-bottom-width: 2px;
+  border-bottom-width: 1px;
   border-image: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(212,212,216,1) 50%, rgba(255,255,255,1) 100%);
   border-image-slice: 1;
 `;

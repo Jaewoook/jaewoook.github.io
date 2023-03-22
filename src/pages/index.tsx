@@ -28,8 +28,8 @@ const Index = () => {
   }, [allPostInfo]);
 
   return (
-    <div className="container mx-auto pt-6">
-      <Category mb={["16px", "32px"]} categories={categories} selectedIndex={selectedCategory.index} />
+    <div className="container mx-auto pt-6 max-sm:pt-4">
+      <Category mb={["16px", "24px"]} categories={categories} selectedIndex={selectedCategory.index} />
       <section className="flex flex-1 flex-wrap gap-4">
         {posts.map((node) => {
           return (
