@@ -72,8 +72,8 @@ export const PostCard = (props: Props) => {
       <div className="z-10 flex flex-col items-center text-white">
         <span className="hover:text-amber-300">{category.toUpperCase()}</span>
         <div className="w-5 border-b-2"></div>
-        <h3 className="text-center break-keep mt-4 text-2xl font-semibold">{title}</h3>
-        <span>{date}</span>
+        <h3 className="mt-4 text-center break-keep text-2xl font-semibold">{title}</h3>
+        <span className="mt-8 text-sm font-extralight">{date}</span>
       </div>
     </Wrapper>
   );
