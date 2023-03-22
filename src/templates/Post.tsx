@@ -50,7 +50,7 @@ const Tags = (props: TagsProps) => {
   if (!props.tags) return null;
 
   return (
-    <section className="max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center">
+    <section className="max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center text-zinc-600">
       {props.tags.map((tag) => (
         <TagSpan key={tag} className="max-sm:mt-2">{tag}</TagSpan>
       ))}
@@ -100,11 +100,11 @@ const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContex
   return (
     <div className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
       <section className="flex flex-col items-center py-6 px-4">
-        <h1 className="text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
-        <div className="mt-4 flex flex-row">
-          <h3>{data.mdx?.frontmatter?.author}</h3>
+        <h1 className="text-4xl leading-snug text-zinc-900 font-semibold">{data.mdx?.frontmatter?.title}</h1>
+        <div className="mt-4 flex flex-row text-zinc-700">
+          <p>{data.mdx?.frontmatter?.author}</p>
           <span className="mx-3">⸺</span>
-          <h3>{data.mdx?.frontmatter?.date}</h3>
+          <p>{data.mdx?.frontmatter?.date}</p>
         </div>
         {heroImage ? (
           <div className="mt-8 shadow-slate-400 shadow-lg">
