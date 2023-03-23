@@ -13,6 +13,12 @@ const config = {
   // typesOutputPath: "src/types",
   plugins: [
     {
+      resolve: "@sentry/gatsby",
+      options: {
+        dsn: "https://f864f1fd319441c494152a7686d1283a@o415139.ingest.sentry.io/4504888767610880",
+      },
+    },
+    {
       resolve: "gatsby-plugin-manifest",
       options: {
         name: "point of view",
