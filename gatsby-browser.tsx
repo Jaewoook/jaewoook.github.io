@@ -25,6 +25,12 @@ import Layout from "./src/components/Layout";
  */
 import type { GatsbyBrowser } from "gatsby";
 
+/**
+ * Set vh - px as CSS variable
+ */
+const vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty("--vh", `${vh}px`);
+
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({ element, props }) => {
   return (
     <RecoilRoot>

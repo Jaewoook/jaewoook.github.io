@@ -12,9 +12,13 @@ import { Header } from "./Header";
 import { Progress } from "./Progress";
 
 const Wrapper = styled.div`
-  min-height: -webkit-fill-available;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-device-width: 640px) {
+    min-height: clac(var(--vh, 1vh) * 100);
+  }
 `;
 
 const Layout = (props: React.PropsWithChildren) => {
