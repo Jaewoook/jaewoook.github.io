@@ -10,14 +10,22 @@ import { useRecoilState } from "recoil";
 import { useAllPostInfo } from "../hooks/useAllPostInfo";
 import { PostCard } from "../components/PostCard";
 import { Category } from "../components/Category";
+import { SEO } from "../components/SEO";
 import { selectedCategoryState } from "../states/category";
+
+/**
+ * Type modules
+ */
+import type { HeadFC } from "gatsby";
 
 const Index = () => {
   const allPostInfo = useAllPostInfo();
   const [selectedCategory, setSelectedCategory] = useRecoilState(selectedCategoryState);
   const [categories, setCategories] = useState<string[]>([]);
   const posts = useMemo(() => {
-    return allPostInfo.nodes.filter((post) => selectedCategory.index === 0 ? true : post.frontmatter?.category === selectedCategory.name);
+    return allPostInfo.nodes.filter((post) =>
+      selectedCategory.index === 0 ? true : post.frontmatter?.category === selectedCategory.name
+    );
   }, [allPostInfo.nodes, selectedCategory]);
 
   useEffect(() => {
@@ -51,3 +59,7 @@ const Index = () => {
 };
 
 export default Index;
+
+export const Head: HeadFC = ({ location }) => {
+  return <SEO path={location.pathname} />;
+};

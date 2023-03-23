@@ -8,7 +8,13 @@ import { RiFileWarningLine } from "react-icons/ri";
  * Internal modules
  */
 import { Button } from "../components/Button";
+import { SEO } from "../components/SEO";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
+
+/**
+ * Type modules
+ */
+import { HeadFC } from "gatsby";
 
 const NotFoundPage = () => {
   const siteMetadata = useSiteMetadata();
@@ -25,3 +31,7 @@ const NotFoundPage = () => {
 };
 
 export default NotFoundPage;
+
+export const Head: HeadFC = ({ location }) => {
+  return <SEO title="Page not found" path={location.pathname} />;
+};

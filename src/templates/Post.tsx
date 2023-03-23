@@ -13,11 +13,12 @@ import styled from "styled-components";
 import * as Heading from "../components/typography/Heading";
 import * as List from "../components/typography/List";
 import * as Paragraph from "../components/typography/Paragraph";
+import { SEO } from "../components/SEO";
 
 /**
  * Type modules
  */
-import type { PageProps } from "gatsby";
+import type { HeadFC, PageProps } from "gatsby";
 
 const TagSpan = styled.span`
   color: rgb(82 82 91);
@@ -35,9 +36,7 @@ const TagSpan = styled.span`
     padding: 1px;
     border-radius: 4px;
     background: linear-gradient(to right, #9c20aa, #fb3570);
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
@@ -53,10 +52,12 @@ const Tags = (props: TagsProps) => {
   return (
     <section className="max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center">
       {props.tags.map((tag) => (
-        <TagSpan key={tag} className="max-sm:mt-2">{tag}</TagSpan>
+        <TagSpan key={tag} className="max-sm:mt-2">
+          {tag}
+        </TagSpan>
       ))}
     </section>
-  )
+  );
 };
 
 const mdxComponents = {
@@ -84,6 +85,7 @@ export const query = graphql`
         title
         author
         hero {
+          publicURL
           childImageSharp {
             gatsbyImageData(width: 800)
           }
@@ -122,3 +124,14 @@ const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContex
 };
 
 export default Post;
+
+export const Head: HeadFC<Queries.GetPostByIdQuery, PageContext> = ({ location, data }) => {
+  return (
+    <SEO
+      title={data.mdx?.frontmatter?.title}
+      description={data.mdx?.excerpt}
+      path={location.pathname}
+      image={data.mdx?.frontmatter?.hero?.publicURL}
+    />
+  );
+};

@@ -1,7 +1,7 @@
 const siteMetadata = {
-  title: `point of view.`,
+  title: "point of view.",
   name: "Jaewook Ahn",
-  description: `Post all about Jaewook's point of view. Write code, memorable moment, take photo, share lifestyle, experience.`,
+  description: "Jaewook's point of view.",
   siteUrl: "https://jaewook.me",
   githubUrl: "https://github.com/Jaewoook",
   portfolioUrl: "https://portfolio.jaewook.me",
@@ -15,13 +15,13 @@ const config = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Jaewook's point of view | Blog",
+        name: "point of view",
         short_name: "point of view",
         start_url: "/",
-        background_color: `#fff`,
-        theme_color: `#fff`,
+        background_color: "#fff",
+        theme_color: "#fff",
         lang: "ko",
-        display: `standalone`,
+        display: "standalone",
         icon: "src/images/favicon.png",
       },
     },
@@ -38,6 +38,8 @@ const config = {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 800,
+              linkImagesToOriginal: false,
+              withWebp: true,
             },
           },
           {

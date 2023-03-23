@@ -14,31 +14,25 @@ import path from "path";
  */
 import { CreatePagesArgs } from "gatsby";
 
-const ALL_POST_PATHS_QUERY = `
-  query AllPostPaths {
-    allMdx {
-      nodes {
-        id
-        frontmatter {
-          slug
-          secret
-        }
-        internal {
-          contentFilePath
+export const createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) => {
+  const { createPage } = actions;
+
+  const queryResults = await graphql<Queries.AllPostPathsQuery>(`
+    query AllPostPaths {
+      allMdx {
+        nodes {
+          id
+          frontmatter {
+            slug
+            secret
+          }
+          internal {
+            contentFilePath
+          }
         }
       }
     }
-  }
-`;
-
-export const createPages = async ({
-  graphql,
-  actions,
-  reporter,
-}: CreatePagesArgs) => {
-  const { createPage } = actions;
-
-  const queryResults = await graphql<Queries.AllPostPathsQuery>(ALL_POST_PATHS_QUERY);
+  `);
   if (queryResults.errors) {
     reporter.panicOnBuild("Error while running GraphQL query.");
     return;
