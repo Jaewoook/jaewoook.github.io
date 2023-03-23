@@ -17,7 +17,6 @@ import { ImageFallback } from "../components/ImageFallback";
 import type { IGatsbyImageData } from "gatsby-plugin-image";
 
 const Wrapper = styled.div`
-  display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
@@ -31,6 +30,7 @@ const Wrapper = styled.div`
 `;
 
 interface Props {
+  className?: string;
   title: string;
   date: string;
   secret: boolean;
@@ -41,7 +41,7 @@ interface Props {
 }
 
 export const PostCard = (props: Props) => {
-  const { title, date, secret, category, image, excerpt, slug } = props;
+  const { className = "flex", title, date, secret, category, image, excerpt, slug } = props;
 
   // Do not display secret content in production mode
   if (process.env.NODE_ENV === "production" && secret) {
@@ -53,7 +53,7 @@ export const PostCard = (props: Props) => {
   }, [slug]);
 
   return (
-    <Wrapper onClick={handleClick}>
+    <Wrapper className={className} onClick={handleClick}>
       {image ? (
         <GatsbyImage
           className="shadow-zinc-600 shadow-md top-0 left-0 right-0 bottom-0 select-none"

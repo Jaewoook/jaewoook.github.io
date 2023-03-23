@@ -1,7 +1,7 @@
 /**
  * External modules
  */
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 
 /**
@@ -22,11 +22,6 @@ const Index = () => {
   const allPostInfo = useAllPostInfo();
   const [selectedCategory, setSelectedCategory] = useRecoilState(selectedCategoryState);
   const [categories, setCategories] = useState<string[]>([]);
-  const posts = useMemo(() => {
-    return allPostInfo.nodes.filter((post) =>
-      selectedCategory.index === 0 ? true : post.frontmatter?.category === selectedCategory.name
-    );
-  }, [allPostInfo.nodes, selectedCategory]);
 
   useEffect(() => {
     const c = allPostInfo.nodes.map((post) => post.frontmatter?.category ?? "").filter((c) => !!c);
@@ -39,9 +34,10 @@ const Index = () => {
     <div className="container mx-auto pt-6 max-sm:pt-4">
       <Category mb={["16px", "24px"]} categories={categories} selectedIndex={selectedCategory.index} />
       <section className="flex flex-1 flex-wrap gap-4">
-        {posts.map((node) => {
+        {allPostInfo.nodes.map((node) => {
           return (
             <PostCard
+              className={selectedCategory.index === 0 || selectedCategory.name === node.frontmatter?.category ? "flex" : "hidden"}
               key={node.id}
               title={node.frontmatter?.title ?? ""}
               excerpt={node.excerpt ?? ""}
