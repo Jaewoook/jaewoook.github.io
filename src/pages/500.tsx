@@ -8,7 +8,13 @@ import { TbPray } from "react-icons/tb";
  * Internal modules
  */
 import { Button } from "../components/Button";
+import { SEO } from "../components/SEO";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
+
+/**
+ * Type modules
+ */
+import { HeadFC } from "gatsby";
 
 const ErrorPage = () => {
   const siteMetadata = useSiteMetadata();
@@ -25,3 +31,7 @@ const ErrorPage = () => {
 };
 
 export default ErrorPage;
+
+export const Head: HeadFC = ({ location }) => {
+  return <SEO title="Internal error" path={location.pathname} />
+};
