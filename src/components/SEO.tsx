@@ -40,8 +40,8 @@ export const SEO = (props: React.PropsWithChildren<SEOProps>) => {
       <meta name="og:description" content={description ?? siteMetadata?.description ?? ""} />
       {image ? (
         <>
-          <meta name="image" content={`${siteMetadata?.siteUrl}/${image}`} />
-          <meta name="og:image" content={`${siteMetadata?.siteUrl}/${image}`} />
+          <meta name="image" content={`${siteMetadata?.siteUrl}${image}`} />
+          <meta name="og:image" content={`${siteMetadata?.siteUrl}${image}`} />
         </>
       ) : null}
       <meta name="apple-mobile-web-app-capable" content="yes" />
