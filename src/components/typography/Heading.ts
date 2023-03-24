@@ -10,16 +10,18 @@ export const H1 = styled.h1`
   font-weight: 600;
   margin-top: 48px;
   margin-bottom: 16px;
+  word-break: keep-all;
   ${tw`text-zinc-800`}
   `;
 
 export const H2 = styled.h2`
   text-align: center;
   font-size: 28px;
-  line-height: 52px;
-  font-weight: 500;
+  line-height: 48px;
+  font-weight: 600;
   margin-top: 28px;
   margin-bottom: 8px;
+  word-break: keep-all;
   ${tw`text-zinc-800`}
   `;
 
@@ -29,6 +31,7 @@ export const H3 = styled.h3`
   font-weight: 500;
   margin-top: 32px;
   margin-bottom: 8px;
+  word-break: keep-all;
   ${tw`text-zinc-800`}
   `;
 
@@ -38,5 +41,6 @@ export const H4 = styled.h4`
   font-weight: 500;
   margin-top: 24px;
   margin-bottom: 4px;
+  word-break: keep-all;
   ${tw`text-zinc-800`}
 `;
