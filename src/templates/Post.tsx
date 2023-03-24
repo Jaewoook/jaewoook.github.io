@@ -112,7 +112,7 @@ const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContex
         </div>
         {heroImage ? (
           <div className="mt-8 shadow-slate-400 shadow-lg">
-            <GatsbyImage alt={data.mdx?.frontmatter?.title ?? "hero image"} image={heroImage} />
+            <GatsbyImage alt={data.mdx?.frontmatter?.title ?? "hero image"} loading="eager" image={heroImage} />
           </div>
         ) : null}
       </section>

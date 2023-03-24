@@ -60,6 +60,7 @@ export const PostCard = (props: Props) => {
           imgClassName="brightness-50"
           style={{ position: "absolute" }}
           alt={title}
+          loading="eager"
           image={image}
         />
       ) : (
