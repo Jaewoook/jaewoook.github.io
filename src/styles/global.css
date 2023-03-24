@@ -11,6 +11,10 @@ html, body {
     overflow-x: hidden;
 }
 
+a.anchor.before {
+    top: calc(50% - 8px) !important;
+}
+
 /* .gatsby-highlight-code-line {
   background-color: #feb;
   display: block;

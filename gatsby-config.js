@@ -54,6 +54,12 @@ const config = {
               showLineNumbers: true,
             },
           },
+          {
+            resolve: "gatsby-remark-autolink-headers",
+            options: {
+              elements: ["h1", "h2", "h3"]
+            }
+          }
         ],
         mdxOptions: {
           remarkPlugins: [import("remark-gfm")],
