@@ -1,11 +1,12 @@
 /**
  * External modules
  */
-import React from "react";
+import React, { useMemo } from "react";
 import { graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "styled-components";
+import { space } from "styled-system";
 
 /**
  * Internal modules
@@ -19,6 +20,40 @@ import { SEO } from "../components/SEO";
  * Type modules
  */
 import type { HeadFC, PageProps } from "gatsby";
+import type { SpaceProps } from "styled-system";
+
+type ContentItem = {
+  url: string;
+  title: string;
+  items?: ContentItem[];
+};
+
+interface TableOfContentsProps extends SpaceProps {
+  items: ContentItem[];
+}
+
+const TableOfContents = (props: TableOfContentsProps) => {
+  const { items, ...styles } = props;
+
+  return (
+    <List.UL {...styles}>
+      {items.map((item) => (
+        <li>
+          <a href={item.url}>{item.title}</a>
+          {item.items ? (
+            <List.UL>
+              {item.items.map((i) => (
+                <li>
+                  <a href={i.url}>{i.title}</a>
+                </li>
+              ))}
+            </List.UL>
+          ) : null}
+        </li>
+      ))}
+    </List.UL>
+  );
+};
 
 const TagSpan = styled.span`
   color: rgb(82 82 91);
@@ -80,6 +115,7 @@ export const query = graphql`
   query GetPostById($id: String) {
     mdx(id: { eq: $id }) {
       excerpt
+      tableOfContents
       frontmatter {
         date(formatString: "DD MMMM, YYYY")
         title
@@ -102,8 +138,8 @@ export const query = graphql`
 const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContext>) => {
   const heroImage = getImage(data.mdx?.frontmatter?.hero?.childImageSharp?.gatsbyImageData ?? null);
   return (
-    <div className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
-      <section className="flex flex-col items-center py-6 px-4">
+    <article className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
+      <div className="flex flex-col items-center py-6 px-4">
         <h1 className="text-zinc-900 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
         <div className="mt-4 flex flex-row text-zinc-700">
           <p>{data.mdx?.frontmatter?.author}</p>
@@ -115,12 +151,14 @@ const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContex
             <GatsbyImage alt={data.mdx?.frontmatter?.title ?? "hero image"} image={heroImage} />
           </div>
         ) : null}
-      </section>
-      <article className="max-sm:px-4">
+      </div>
+      <div className="max-sm:px-4">
+        <Heading.H2 className="text-start">Table of Contents</Heading.H2>
+        <TableOfContents mb={["32px", "48px"]} items={(data.mdx?.tableOfContents?.items as any) ?? []} />
         <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-      </article>
+      </div>
       <Tags tags={data.mdx?.frontmatter?.tags} />
-    </div>
+    </article>
   );
 };
 
