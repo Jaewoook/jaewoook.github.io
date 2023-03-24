@@ -79,10 +79,10 @@ interface PageContext {
 export const query = graphql`
   query GetPostById($id: String) {
     mdx(id: { eq: $id }) {
-      excerpt
       frontmatter {
         date(formatString: "DD MMMM, YYYY")
         title
+        excerpt
         author
         hero {
           publicURL
@@ -129,7 +129,7 @@ export const Head: HeadFC<Queries.GetPostByIdQuery, PageContext> = ({ location, 
   return (
     <SEO
       title={data.mdx?.frontmatter?.title}
-      description={data.mdx?.excerpt}
+      description={data.mdx?.frontmatter?.excerpt}
       path={location.pathname}
       image={data.mdx?.frontmatter?.hero?.publicURL}
     />
