@@ -74,12 +74,12 @@ const config = {
       },
     },
     "gatsby-plugin-catch-links",
-    {
-      resolve: "gatsby-plugin-offline",
-      options: {
-        precachePages: ["/*"]
-      }
-    },
+    // {
+    //   resolve: "gatsby-plugin-offline",
+    //   options: {
+    //     precachePages: ["/"]
+    //   }
+    // },
     {
       resolve: "gatsby-plugin-disqus",
       options: {

@@ -1,13 +1,13 @@
 /**
  * External modules
  */
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
+import { graphql } from "gatsby";
 import { useRecoilState } from "recoil";
 
 /**
  * Internal modules
  */
-import { useAllPostInfo } from "../hooks/useAllPostInfo";
 import { PostCard } from "../components/PostCard";
 import { Category } from "../components/Category";
 import { SEO } from "../components/SEO";
@@ -16,18 +16,43 @@ import { selectedCategoryState } from "../states/category";
 /**
  * Type modules
  */
-import type { HeadFC } from "gatsby";
+import type { HeadFC, PageProps } from "gatsby";
 
-const Index = () => {
-  const allPostInfo = useAllPostInfo();
+export const query = graphql`
+  query AllPostInfo {
+    allMdx(sort: { frontmatter: { date: DESC } }) {
+      totalCount
+      nodes {
+        id
+        excerpt
+        frontmatter {
+          author
+          date(formatString: "DD MMMM, YYYY")
+          category
+          tags
+          title
+          slug
+          secret
+          hero {
+            childImageSharp {
+              gatsbyImageData(width: 400 placeholder: BLURRED)
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+
+const Index = (props: PageProps<Queries.AllPostInfoQuery>) => {
+  const { data: { allMdx: allPostInfo } } = props;
   const [selectedCategory, setSelectedCategory] = useRecoilState(selectedCategoryState);
-  const [categories, setCategories] = useState<string[]>([]);
-
-  useEffect(() => {
+  // const [categories, setCategories] = useState<string[]>([]);
+  const categories = useMemo(() => {
     const c = allPostInfo.nodes.map((post) => post.frontmatter?.category ?? "").filter((c) => !!c);
     const catSet = new Set<string>(c);
-    setCategories(Array.from(catSet));
-    console.log(c);
+    return Array.from(catSet);
   }, [allPostInfo]);
 
   return (
