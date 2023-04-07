@@ -9,7 +9,7 @@
 /**
  * External modules
  */
-import React from "react";
+import React, { useEffect } from "react";
 import { RecoilRoot } from "recoil";
 // import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 
@@ -25,13 +25,13 @@ import Layout from "./src/components/Layout";
  */
 import type { GatsbyBrowser } from "gatsby";
 
-/**
- * Set vh - px as CSS variable
- */
-const vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({ element, props }) => {
+  useEffect(() => {
+    // Set vh - px as CSS variable
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }, []);
   return (
     <RecoilRoot>
       <Layout {...props}>

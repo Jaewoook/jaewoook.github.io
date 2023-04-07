@@ -15,6 +15,8 @@ import { RecoilRoot } from "recoil";
 /**
  * Internal modules
  */
+import "./src/styles/global.css";
+import "./src/styles/syntax-highlight.css";
 import Layout from "./src/components/Layout";
 
 /**
