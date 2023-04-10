@@ -13,11 +13,11 @@
     "type": "git",
     "url": "https://github.com/Jaewoook/jaewoook.github.io.git"
   },
-  "homepage": "https://jaewoook.github.io",
+  "homepage": "https://jaewook.me",
   "scripts": {
     "build": "gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "gatsby develop",
+    "start": "gatsby develop -p 9876",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "predeploy": "gatsby build --prefix-paths",
