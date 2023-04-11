@@ -12,6 +12,7 @@ import { space } from "styled-system";
  * Internal modules
  */
 import * as Heading from "../components/typography/Heading";
+import * as Link from "../components/typography/Link";
 import * as List from "../components/typography/List";
 import * as Paragraph from "../components/typography/Paragraph";
 import { SEO } from "../components/SEO";
@@ -38,13 +39,13 @@ const TableOfContents = (props: TableOfContentsProps) => {
   return (
     <List.UL {...styles}>
       {items.map((item) => (
-        <li>
-          <a href={item.url}>{item.title}</a>
+        <li key={item.url}>
+          <Link.Anchor href={item.url}>{item.title}</Link.Anchor>
           {item.items ? (
             <List.UL>
               {item.items.map((i) => (
-                <li>
-                  <a href={i.url}>{i.title}</a>
+                <li key={i.url}>
+                  <Link.Anchor href={i.url}>{i.title}</Link.Anchor>
                 </li>
               ))}
             </List.UL>
@@ -103,6 +104,7 @@ const mdxComponents = {
   ul: List.UL,
   ol: List.OL,
   p: Paragraph.P,
+  a: Link.Anchor,
   blockquote: Paragraph.BlockQuote,
 };
 

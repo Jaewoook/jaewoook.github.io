@@ -14,6 +14,7 @@ html, body {
 
 a.anchor.before {
     top: calc(50% - 8px) !important;
+    border-bottom: none;
 }
 
 /* .gatsby-highlight-code-line {
