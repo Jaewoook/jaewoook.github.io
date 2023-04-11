@@ -1,7 +1,8 @@
 /**
  * External modules
  */
-import tw, { styled } from "twin.macro";
+import styled from "styled-components";
+import tw from "twin.macro";
 
 export const H1 = styled.h1`
   text-align: center;

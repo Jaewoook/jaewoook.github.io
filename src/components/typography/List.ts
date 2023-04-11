@@ -1,8 +1,9 @@
 /**
  * External modules
  */
-import tw, { styled } from "twin.macro";
+import styled from "styled-components";
 import { space } from "styled-system";
+import tw from "twin.macro";
 
 /**
  * Type modules
