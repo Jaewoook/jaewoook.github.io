@@ -4,7 +4,8 @@
 import React, { useCallback } from "react";
 import { navigate } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import tw, { styled } from "twin.macro";
+import styled from "styled-components";
+import tw from "twin.macro";
 
 /**
  * Internal modules
