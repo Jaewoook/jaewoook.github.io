@@ -1,7 +1,6 @@
 /**
  * External modules
  */
-import React from "react";
 import styled from "styled-components";
 import { width, height } from "styled-system";
 import { BsImageFill } from "react-icons/bs";

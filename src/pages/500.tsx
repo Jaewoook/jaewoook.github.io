@@ -1,7 +1,6 @@
 /**
  * External modules
  */
-import React from "react";
 import { TbPray } from "react-icons/tb";
 
 /**

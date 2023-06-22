@@ -9,7 +9,7 @@
 /**
  * External modules
  */
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { RecoilRoot } from "recoil";
 // import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 

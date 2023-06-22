@@ -9,7 +9,6 @@
 /**
  * External modules
  */
-import React from "react";
 import { RecoilRoot } from "recoil";
 
 /**

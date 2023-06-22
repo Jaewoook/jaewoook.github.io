@@ -1,7 +1,7 @@
 /**
  * External modules
  */
-import React, { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { graphql } from "gatsby";
 import { useRecoilState } from "recoil";
 
@@ -48,7 +48,6 @@ export const query = graphql`
 const Index = (props: PageProps<Queries.AllPostInfoQuery>) => {
   const { data: { allMdx: allPostInfo } } = props;
   const [selectedCategory, setSelectedCategory] = useRecoilState(selectedCategoryState);
-  // const [categories, setCategories] = useState<string[]>([]);
   const categories = useMemo(() => {
     const c = allPostInfo.nodes.map((post) => post.frontmatter?.category ?? "").filter((c) => !!c);
     const catSet = new Set<string>(c);

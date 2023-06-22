@@ -1,7 +1,7 @@
 /**
  * External modules
  */
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { space, SpaceProps } from "styled-system";

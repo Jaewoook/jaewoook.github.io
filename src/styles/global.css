@@ -17,6 +17,10 @@ a.anchor.before {
     border-bottom: none;
 }
 
+.post-hero-image {
+    max-height: 480px;
+}
+
 /* .gatsby-highlight-code-line {
   background-color: #feb;
   display: block;

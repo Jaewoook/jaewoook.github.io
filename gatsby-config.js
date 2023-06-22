@@ -10,13 +10,14 @@ const siteMetadata = {
 const config = {
   siteMetadata,
   graphqlTypegen: true,
+  jsxRuntime: "automatic",
   // typesOutputPath: "src/types",
   plugins: [
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "point of view",
-        short_name: "point of view",
+        name: "point of view.",
+        short_name: "point of view.",
         start_url: "/",
         background_color: "#fff",
         theme_color: "#fff",

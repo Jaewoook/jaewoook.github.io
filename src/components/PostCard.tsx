@@ -1,7 +1,7 @@
 /**
  * External modules
  */
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { navigate } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";

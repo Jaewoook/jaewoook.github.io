@@ -12,7 +12,7 @@ import path from "path";
 /**
  * Type modules
  */
-import { CreatePagesArgs } from "gatsby";
+import type { CreatePagesArgs } from "gatsby";
 
 export const createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) => {
   const { createPage } = actions;

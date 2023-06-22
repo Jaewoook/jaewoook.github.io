@@ -1,7 +1,6 @@
 /**
  * External modules
  */
-import React from "react";
 import { RiFileWarningLine } from "react-icons/ri";
 
 /**
