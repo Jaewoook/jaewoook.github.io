@@ -1,25 +1,9 @@
-# jaewoook.github.io
+# [point of view.](https://jaewook.me) [![CI](https://github.com/Jaewoook/point-of-view/actions/workflows/ci.yml/badge.svg)](https://github.com/Jaewoook/point-of-view/actions/workflows/ci.yml)
 
-Jaewoook's github blog repository.
+Jaewook's blog built on Gatsby.
 
-## To-Do
+![site main image](./images/site_main.png)
 
-- Google Analytics 추가하기
-- Photo Template 만들기
+## License
 
-## Doing
-
-- None
-
-## Done
-
-- Hyper 사용기
-- Windows Subsystem for Linux
-- Dell XPS DBC Issue
-- CRA TS WIndow object extending
-
-## Install Prequisite dependency
-
-```sh
-yarn install
-```
+This project is licensed under the [MIT License](./LICENSE).
