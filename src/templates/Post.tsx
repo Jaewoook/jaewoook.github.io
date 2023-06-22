@@ -1,12 +1,10 @@
 /**
  * External modules
  */
-import React, { useMemo } from "react";
 import { graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { space } from "styled-system";
 
 /**
  * Internal modules
@@ -15,46 +13,12 @@ import * as Heading from "../components/typography/Heading";
 import * as Link from "../components/typography/Link";
 import * as List from "../components/typography/List";
 import * as Paragraph from "../components/typography/Paragraph";
-import { SEO } from "../components/SEO";
+import { SEO, TableOfContents } from "../components";
 
 /**
  * Type modules
  */
 import type { HeadFC, PageProps } from "gatsby";
-import type { SpaceProps } from "styled-system";
-
-type ContentItem = {
-  url: string;
-  title: string;
-  items?: ContentItem[];
-};
-
-interface TableOfContentsProps extends SpaceProps {
-  items: ContentItem[];
-}
-
-const TableOfContents = (props: TableOfContentsProps) => {
-  const { items, ...styles } = props;
-
-  return (
-    <List.UL {...styles}>
-      {items.map((item) => (
-        <li key={item.url}>
-          <Link.Anchor href={item.url}>{item.title}</Link.Anchor>
-          {item.items ? (
-            <List.UL>
-              {item.items.map((i) => (
-                <li key={i.url}>
-                  <Link.Anchor href={i.url}>{i.title}</Link.Anchor>
-                </li>
-              ))}
-            </List.UL>
-          ) : null}
-        </li>
-      ))}
-    </List.UL>
-  );
-};
 
 const TagSpan = styled.span`
   color: rgb(82 82 91);
@@ -150,7 +114,7 @@ const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContex
         </div>
         {heroImage ? (
           <div className="mt-8 shadow-slate-400 shadow-lg">
-            <GatsbyImage alt={data.mdx?.frontmatter?.title ?? "hero image"} image={heroImage} />
+            <GatsbyImage className="post-hero-image" alt={data.mdx?.frontmatter?.title ?? "hero image"} image={heroImage} />
           </div>
         ) : null}
       </div>
