@@ -1,7 +1,6 @@
 /**
  * External modules
  */
-import React from "react";
 import { FaGithub } from "react-icons/fa";
 
 /**
@@ -16,7 +15,7 @@ export const Footer = () => {
     <footer className="container flex flex-row py-8 mx-auto space-x-4 max-sm:justify-center">
       <p>Copyright &copy; 2023 {siteMetadata?.name}</p>
       <span> | </span>
-      <a className="inline-flex items-center" target="_blank" href={siteMetadata?.githubUrl ?? ""}>
+      <a className="inline-flex items-center" rel="noreferrer" target="_blank" href={siteMetadata?.githubUrl ?? ""}>
         <FaGithub className="mr-1" />
         GitHub
       </a>

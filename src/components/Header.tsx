@@ -26,7 +26,7 @@ const HeaderWrapper = styled.header`
 
 const NavItem = (props: NavItemProps) => {
   return (
-    <a className="inline-flex items-center cursor-pointer" target="_blank" href={props.url}>
+    <a className="inline-flex items-center cursor-pointer" rel="noreferrer" target="_blank" href={props.url}>
       {props.icon}
       <span className="ml-3 text-xl font-extralight select-none hidden md:inline">{props.label}</span>
     </a>
