@@ -42,16 +42,16 @@ interface Props {
 }
 
 export const PostCard = (props: Props) => {
-  const { className = "flex", title, date, secret, category, image, excerpt, slug } = props;
+  const { className = "flex", title, date, secret, category, image, slug } = props;
+
+  const handleClick = useCallback(() => {
+    navigate("/" + slug);
+  }, [slug]);
 
   // Do not display secret content in production mode
   if (process.env.NODE_ENV === "production" && secret) {
     return null;
   }
-
-  const handleClick = useCallback(() => {
-    navigate("/" + slug);
-  }, [slug]);
 
   return (
     <Wrapper className={className} onClick={handleClick}>

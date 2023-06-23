@@ -3,7 +3,7 @@
  */
 import { useMemo } from "react";
 import { graphql } from "gatsby";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
 /**
  * Internal modules
@@ -47,7 +47,7 @@ export const query = graphql`
 
 const Index = (props: PageProps<Queries.AllPostInfoQuery>) => {
   const { data: { allMdx: allPostInfo } } = props;
-  const [selectedCategory, setSelectedCategory] = useRecoilState(selectedCategoryState);
+  const selectedCategory = useRecoilValue(selectedCategoryState);
   const categories = useMemo(() => {
     const c = allPostInfo.nodes.map((post) => post.frontmatter?.category ?? "").filter((c) => !!c);
     const catSet = new Set<string>(c);

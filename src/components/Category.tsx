@@ -39,7 +39,10 @@ const CategoryItem = (props: CategoryItemProps) => {
   const { children, onClick, selected, ...styles } = props;
   return (
     <div
-      className={"border rounded-2xl cursor-pointer px-6 py-1 transition-all hover:border-zinc-700 " + (selected ? "bg-zinc-900 text-white" : "bg-white text-zinc-700")}
+      className={
+        "border rounded-2xl cursor-pointer px-6 py-1 transition-all hover:border-zinc-700 " +
+        (selected ? "bg-zinc-900 text-white" : "bg-white text-zinc-700")
+      }
       onClick={onClick}
       {...styles}
     >
@@ -62,7 +65,7 @@ export const Category = (props: CategoryProps) => {
       if (index === selectedCategory.index) return;
       setSelectedCategory({ name, index });
     },
-    [selectedCategory]
+    [selectedCategory, setSelectedCategory]
   );
 
   return (
