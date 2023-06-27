@@ -4,6 +4,7 @@
 import { graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { Disqus } from "gatsby-plugin-disqus";
 import styled from "styled-components";
 
 /**
@@ -19,6 +20,7 @@ import { SEO, TableOfContents } from "../components";
  * Type modules
  */
 import type { HeadFC, PageProps } from "gatsby";
+import type { DisqusConfig } from "gatsby-plugin-disqus";
 
 const TagSpan = styled.span`
   color: rgb(82 82 91);
@@ -50,7 +52,7 @@ const Tags = (props: TagsProps) => {
   if (!props.tags) return null;
 
   return (
-    <section className="max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center">
+    <section className="max-w-3xl mx-auto max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center">
       {props.tags.map((tag) => (
         <TagSpan key={tag} className="max-sm:mt-2">
           {tag}
@@ -98,33 +100,53 @@ export const query = graphql`
         tags
       }
     }
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
   }
 `;
 
-const Post = ({ data, children }: PageProps<Queries.GetPostByIdQuery, PageContext>) => {
+const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuery, PageContext>) => {
   const heroImage = getImage(data.mdx?.frontmatter?.hero?.childImageSharp?.gatsbyImageData ?? null);
+  const disqusConfig: DisqusConfig = {
+    title: data.mdx?.frontmatter?.title ?? "",
+    url: new URL(pageContext.pagePath, data.site?.siteMetadata?.siteUrl ?? "").href,
+    identifier: pageContext.id,
+  };
+
   return (
-    <article className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
-      <div className="flex flex-col items-center py-6 px-4">
-        <h1 className="text-zinc-900 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
-        <div className="mt-4 flex flex-row text-zinc-700">
-          <p>{data.mdx?.frontmatter?.author}</p>
-          <span className="mx-3">⸺</span>
-          <p>{data.mdx?.frontmatter?.date}</p>
-        </div>
-        {heroImage ? (
-          <div className="mt-8 shadow-slate-400 shadow-lg">
-            <GatsbyImage className="post-hero-image" alt={data.mdx?.frontmatter?.title ?? "hero image"} image={heroImage} />
+    <>
+      <article className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
+        <div className="flex flex-col items-center py-6 px-4">
+          <h1 className="text-zinc-900 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
+          <div className="mt-4 flex flex-row text-zinc-700">
+            <p>{data.mdx?.frontmatter?.author}</p>
+            <span className="mx-3">⸺</span>
+            <p>{data.mdx?.frontmatter?.date}</p>
           </div>
-        ) : null}
-      </div>
-      <div className="max-sm:px-4">
-        <Heading.H2 className="text-start">Table of Contents</Heading.H2>
-        <TableOfContents mb={["32px", "48px"]} items={(data.mdx?.tableOfContents?.items as any) ?? []} />
-        <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-      </div>
+          {heroImage ? (
+            <div className="mt-8 shadow-slate-400 shadow-lg">
+              <GatsbyImage
+                className="post-hero-image"
+                alt={data.mdx?.frontmatter?.title ?? "hero image"}
+                image={heroImage}
+              />
+            </div>
+          ) : null}
+        </div>
+        <div className="max-sm:px-4">
+          <Heading.H2 className="text-start">Table of Contents</Heading.H2>
+          <TableOfContents mb={["32px", "48px"]} items={(data.mdx?.tableOfContents?.items as any) ?? []} />
+          <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+        </div>
+      </article>
       <Tags tags={data.mdx?.frontmatter?.tags} />
-    </article>
+      <section className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
+        <Disqus config={disqusConfig} />
+      </section>
+    </>
   );
 };
 
