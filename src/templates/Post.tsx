@@ -143,7 +143,7 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
         </div>
       </article>
       <Tags tags={data.mdx?.frontmatter?.tags} />
-      <section className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
+      <section className="max-w-3xl mx-auto pt-12 max-sm:pt-8 max-sm:px-4">
         <Disqus config={disqusConfig} />
       </section>
     </>
