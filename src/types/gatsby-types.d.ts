@@ -1726,8 +1726,6 @@ type Query_siteArgs = {
   internal: InputMaybe<InternalFilterInput>;
   jsxRuntime: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
-  pathPrefix: InputMaybe<StringQueryOperatorInput>;
-  polyfill: InputMaybe<BooleanQueryOperatorInput>;
   port: InputMaybe<IntQueryOperatorInput>;
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>;
   trailingSlash: InputMaybe<StringQueryOperatorInput>;
@@ -1798,8 +1796,6 @@ type Site = Node & {
   readonly internal: Internal;
   readonly jsxRuntime: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
-  readonly pathPrefix: Maybe<Scalars['String']>;
-  readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly port: Maybe<Scalars['Int']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
   readonly trailingSlash: Maybe<Scalars['String']>;
@@ -1993,8 +1989,6 @@ type SiteFieldSelector = {
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly jsxRuntime: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly pathPrefix: InputMaybe<FieldSelectorEnum>;
-  readonly polyfill: InputMaybe<FieldSelectorEnum>;
   readonly port: InputMaybe<FieldSelectorEnum>;
   readonly siteMetadata: InputMaybe<SiteSiteMetadataFieldSelector>;
   readonly trailingSlash: InputMaybe<FieldSelectorEnum>;
@@ -2009,8 +2003,6 @@ type SiteFilterInput = {
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly jsxRuntime: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
-  readonly pathPrefix: InputMaybe<StringQueryOperatorInput>;
-  readonly polyfill: InputMaybe<BooleanQueryOperatorInput>;
   readonly port: InputMaybe<IntQueryOperatorInput>;
   readonly siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>;
   readonly trailingSlash: InputMaybe<StringQueryOperatorInput>;
@@ -2159,26 +2151,18 @@ type SiteFunctionSortInput = {
 };
 
 type SiteGraphqlTypegen = {
-  readonly documentSearchPaths: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly generateOnBuild: Maybe<Scalars['Boolean']>;
   readonly typesOutputPath: Maybe<Scalars['String']>;
 };
 
 type SiteGraphqlTypegenFieldSelector = {
-  readonly documentSearchPaths: InputMaybe<FieldSelectorEnum>;
-  readonly generateOnBuild: InputMaybe<FieldSelectorEnum>;
   readonly typesOutputPath: InputMaybe<FieldSelectorEnum>;
 };
 
 type SiteGraphqlTypegenFilterInput = {
-  readonly documentSearchPaths: InputMaybe<StringQueryOperatorInput>;
-  readonly generateOnBuild: InputMaybe<BooleanQueryOperatorInput>;
   readonly typesOutputPath: InputMaybe<StringQueryOperatorInput>;
 };
 
 type SiteGraphqlTypegenSortInput = {
-  readonly documentSearchPaths: InputMaybe<SortOrderEnum>;
-  readonly generateOnBuild: InputMaybe<SortOrderEnum>;
   readonly typesOutputPath: InputMaybe<SortOrderEnum>;
 };
 
@@ -2560,8 +2544,6 @@ type SiteSortInput = {
   readonly internal: InputMaybe<InternalSortInput>;
   readonly jsxRuntime: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
-  readonly pathPrefix: InputMaybe<SortOrderEnum>;
-  readonly polyfill: InputMaybe<SortOrderEnum>;
   readonly port: InputMaybe<SortOrderEnum>;
   readonly siteMetadata: InputMaybe<SiteSiteMetadataSortInput>;
   readonly trailingSlash: InputMaybe<SortOrderEnum>;
@@ -2631,10 +2613,10 @@ type GetPostByIdQueryVariables = Exact<{
 
 type GetPostByIdQuery = { readonly mdx: { readonly excerpt: string | null, readonly tableOfContents: Record<string, unknown> | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly excerpt: string | null, readonly author: string | null, readonly secret: boolean | null, readonly category: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly hero: { readonly publicURL: string | null, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null, readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
 
-type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+type GetSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type SiteMetadataQuery = { readonly site: { readonly siteMetadata: { readonly name: string | null, readonly siteUrl: string | null, readonly githubUrl: string | null, readonly portfolioUrl: string | null, readonly title: string | null, readonly description: string | null } | null } | null };
+type GetSiteMetadataQuery = { readonly site: { readonly siteMetadata: { readonly name: string | null, readonly siteUrl: string | null, readonly githubUrl: string | null, readonly portfolioUrl: string | null, readonly title: string | null, readonly description: string | null } | null } | null };
 
 type AllPostPathsQueryVariables = Exact<{ [key: string]: never; }>;
 

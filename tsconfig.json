@@ -15,9 +15,6 @@
     },
     "include": [
         "src/**/*",
-        "./gatsby-browser.*",
-        "./gatsby-node.*",
-        "./gatsby-ssr.*",
-        "./gatsby-ssr.*",
+        "./gatsby-*",
     ]
 }
