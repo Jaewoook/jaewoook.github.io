@@ -137,7 +137,7 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
         ) : null}
       </div>
       <div className="flex mt-8 justify-end max-sm:mt-4">
-        <div className="max-w-4xl px-8 max-xl:px-6 max-sm:px-4 max-sm:w-full">
+        <div className="max-w-4xl px-8 max-xl:max-w-3xl max-xl:px-6 max-sm:px-4 max-sm:w-full">
           {/* Post section */}
           <article>
             <MDXProvider components={mdxComponents}>{children}</MDXProvider>
@@ -148,7 +148,7 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
           </section>
         </div>
         {/* Sticky TOC */}
-        <nav className="max-lg:hidden shrink-0 w-80 max-xl:w-72 self-stretch px-4 order-last">
+        <nav className="max-lg:hidden w-80 max-xl:w-72 self-stretch px-4 order-last">
           <div className="sticky top-8 overflow-y-auto">
             <Heading.H3 className="mt-0">Table of Contents</Heading.H3>
             <TableOfContents items={(data.mdx?.tableOfContents?.items as any) ?? []} />
