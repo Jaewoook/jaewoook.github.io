@@ -10,7 +10,7 @@ import styled from "styled-components";
 /**
  * Internal modyles
  */
-import { useSiteMetadata } from "../hooks/useSiteMetadata";
+import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 
 interface NavItemProps {
   url: string;

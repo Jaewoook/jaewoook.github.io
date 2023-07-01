@@ -9,7 +9,7 @@ import styled from "styled-components";
  */
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { Progress } from "./Progress";
+import { Progress } from "../common/Progress";
 
 const Wrapper = styled.div`
   min-height: 100vh;

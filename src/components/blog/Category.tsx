@@ -9,7 +9,7 @@ import { space, SpaceProps } from "styled-system";
 /**
  * Internal modules
  */
-import { selectedCategoryState } from "../states/category";
+import { selectedCategoryState } from "../../states/category";
 
 const CategoryWrapper = styled.div<SpaceProps>`
   ${space}

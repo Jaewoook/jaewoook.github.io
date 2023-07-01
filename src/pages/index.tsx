@@ -8,9 +8,7 @@ import { useRecoilValue } from "recoil";
 /**
  * Internal modules
  */
-import { PostCard } from "../components/PostCard";
-import { Category } from "../components/Category";
-import { SEO } from "../components/SEO";
+import { Category, PostCard, SEO } from "../components/blog";
 import { selectedCategoryState } from "../states/category";
 
 /**

@@ -14,6 +14,8 @@ import path from "path";
  */
 import type { CreatePagesArgs } from "gatsby";
 
+const POST_TEMPLATE_PATH = "src/templates/Post.tsx";
+
 export const createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) => {
   const { createPage } = actions;
 
@@ -38,7 +40,7 @@ export const createPages = async ({ graphql, actions, reporter }: CreatePagesArg
     return;
   }
 
-  const PostComponent = path.resolve("src/templates/Post.tsx");
+  const PostComponent = path.resolve(POST_TEMPLATE_PATH);
   queryResults.data?.allMdx.nodes.forEach((node) => {
     if (!node?.frontmatter?.slug) return;
 

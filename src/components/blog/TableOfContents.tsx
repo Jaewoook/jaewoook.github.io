@@ -1,8 +1,8 @@
 /**
  * Internal modules
  */
-import * as List from "./typography/List";
-import * as Link from "./typography/Link";
+import * as List from "../typography/List";
+import * as Link from "../typography/Link";
 
 /**
  * Type modules
@@ -26,12 +26,12 @@ export const TableOfContents = (props: TableOfContentsProps) => {
     <List.UL {...styles}>
       {items.map((item) => (
         <li key={item.url}>
-          <Link.Anchor href={item.url}>{item.title}</Link.Anchor>
+          <Link.Anchor fontSize={14} href={item.url}>{item.title}</Link.Anchor>
           {item.items ? (
             <List.UL>
               {item.items.map((i) => (
                 <li key={i.url}>
-                  <Link.Anchor href={i.url}>{i.title}</Link.Anchor>
+                  <Link.Anchor fontSize={14} href={i.url}>{i.title}</Link.Anchor>
                 </li>
               ))}
             </List.UL>

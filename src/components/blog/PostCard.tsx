@@ -10,7 +10,7 @@ import tw from "twin.macro";
 /**
  * Internal modules
  */
-import { ImageFallback } from "../components/ImageFallback";
+import { ImageFallback } from "../common/ImageFallback";
 
 /**
  * Type modules
