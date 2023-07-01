@@ -26,7 +26,7 @@ const Layout = (props: React.PropsWithChildren) => {
   return (
     <Wrapper className="flex flex-col bg-neutral-50">
       <Header />
-      <main className="flex-1 md:container md:mx-auto">{children}</main>
+      <main className="flex-1 container mx-auto">{children}</main>
       <Footer />
       <Progress />
     </Wrapper>
