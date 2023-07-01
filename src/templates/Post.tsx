@@ -10,11 +10,11 @@ import styled from "styled-components";
 /**
  * Internal modules
  */
+import { SEO, TableOfContents } from "../components/blog";
 import * as Heading from "../components/typography/Heading";
 import * as Link from "../components/typography/Link";
 import * as List from "../components/typography/List";
 import * as Paragraph from "../components/typography/Paragraph";
-import { SEO, TableOfContents } from "../components";
 
 /**
  * Type modules
@@ -52,13 +52,13 @@ const Tags = (props: TagsProps) => {
   if (!props.tags) return null;
 
   return (
-    <section className="max-w-3xl mx-auto max-sm:px-4 max-sm:mt-8 mt-12 flex flex-wrap items-center">
+    <div className="flex flex-wrap items-center">
       {props.tags.map((tag) => (
         <TagSpan key={tag} className="max-sm:mt-2">
           {tag}
         </TagSpan>
       ))}
-    </section>
+    </div>
   );
 };
 
@@ -118,32 +118,45 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
 
   return (
     <>
-      <article className="max-w-3xl mx-auto pt-12 max-sm:pt-0">
-        <div className="flex flex-col items-center py-6 px-4">
-          <h1 className="text-zinc-900 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
-          <div className="mt-4 flex flex-row text-zinc-700">
-            <p>{data.mdx?.frontmatter?.author}</p>
-            <span className="mx-3">⸺</span>
-            <p>{data.mdx?.frontmatter?.date}</p>
+      {/* Post header section */}
+      <div className="flex flex-col items-center pt-12 max-sm:pt-6 pb-6 px-4">
+        <h1 className="text-zinc-900 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
+        <p className="mt-4 flex text-zinc-700">
+          {data.mdx?.frontmatter?.author}
+          <span className="mx-3">⸺</span>
+          {data.mdx?.frontmatter?.date}
+        </p>
+        {heroImage ? (
+          <div className="mt-8 shadow-slate-400 shadow-lg">
+            <GatsbyImage
+              className="post-hero-image"
+              alt={data.mdx?.frontmatter?.title ?? "hero image"}
+              image={heroImage}
+            />
           </div>
-          {heroImage ? (
-            <div className="mt-8 shadow-slate-400 shadow-lg">
-              <GatsbyImage
-                className="post-hero-image"
-                alt={data.mdx?.frontmatter?.title ?? "hero image"}
-                image={heroImage}
-              />
-            </div>
-          ) : null}
+        ) : null}
+      </div>
+      <div className="flex mt-8 justify-end max-sm:mt-4">
+        <div className="max-w-4xl px-8 max-xl:max-w-3xl max-xl:px-6 max-sm:px-4 max-sm:w-full">
+          {/* Post section */}
+          <article>
+            <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+          </article>
+          {/* Tags section */}
+          <section className="max-sm:mt-8 mt-12">
+            <Tags tags={data.mdx?.frontmatter?.tags} />
+          </section>
         </div>
-        <div className="max-sm:px-4">
-          <Heading.H2 className="text-start">Table of Contents</Heading.H2>
-          <TableOfContents mb={["32px", "48px"]} items={(data.mdx?.tableOfContents?.items as any) ?? []} />
-          <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-        </div>
-      </article>
-      <Tags tags={data.mdx?.frontmatter?.tags} />
-      <section className="max-w-3xl mx-auto pt-12 max-sm:pt-8 max-sm:px-4">
+        {/* Sticky TOC */}
+        <nav className="max-lg:hidden w-80 max-xl:w-72 self-stretch px-4 order-last">
+          <div className="sticky top-8 overflow-y-auto">
+            <Heading.H3 className="mt-0">Table of Contents</Heading.H3>
+            <TableOfContents items={(data.mdx?.tableOfContents?.items as any) ?? []} />
+          </div>
+        </nav>
+      </div>
+      {/* Comment section */}
+      <section className="max-w-4xl mx-auto pt-16 max-sm:px-4">
         <Disqus config={disqusConfig} />
       </section>
     </>

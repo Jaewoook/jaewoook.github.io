@@ -14,11 +14,10 @@ export const OL = styled.ol<SpaceProps>`
   ${space}
   ${tw`text-zinc-700`}
   padding-top: 0.5em;
-  padding-left: 24px;
-  > li {
+  padding-inline-start: 1.125em;
+  & > li {
     list-style-type: decimal;
-    list-style-position: inside;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
     word-wrap: break-word;
     word-break: keep-all;
   }
@@ -28,11 +27,10 @@ export const UL = styled.ul<SpaceProps>`
   ${space}
   ${tw`text-zinc-700`}
   padding-top: 0.5em;
-  padding-left: 24px;
-  > li {
+  padding-inline-start: 1.125em;
+  & > li {
     list-style-type: disc;
-    list-style-position: inside;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
     word-wrap: break-word;
     word-break: keep-all;
   }

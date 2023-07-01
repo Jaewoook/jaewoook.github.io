@@ -2631,10 +2631,10 @@ type GetPostByIdQueryVariables = Exact<{
 
 type GetPostByIdQuery = { readonly mdx: { readonly excerpt: string | null, readonly tableOfContents: Record<string, unknown> | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly excerpt: string | null, readonly author: string | null, readonly secret: boolean | null, readonly category: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly hero: { readonly publicURL: string | null, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null, readonly site: { readonly siteMetadata: { readonly siteUrl: string | null } | null } | null };
 
-type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+type GetSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type SiteMetadataQuery = { readonly site: { readonly siteMetadata: { readonly name: string | null, readonly siteUrl: string | null, readonly githubUrl: string | null, readonly portfolioUrl: string | null, readonly title: string | null, readonly description: string | null } | null } | null };
+type GetSiteMetadataQuery = { readonly site: { readonly siteMetadata: { readonly name: string | null, readonly siteUrl: string | null, readonly githubUrl: string | null, readonly portfolioUrl: string | null, readonly title: string | null, readonly description: string | null } | null } | null };
 
 type AllPostPathsQueryVariables = Exact<{ [key: string]: never; }>;
 

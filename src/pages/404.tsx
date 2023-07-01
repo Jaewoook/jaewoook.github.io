@@ -6,8 +6,8 @@ import { RiFileWarningLine } from "react-icons/ri";
 /**
  * Internal modules
  */
-import { Button } from "../components/Button";
-import { SEO } from "../components/SEO";
+import { Button } from "../components/common";
+import { SEO } from "../components/blog";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
 
 /**
