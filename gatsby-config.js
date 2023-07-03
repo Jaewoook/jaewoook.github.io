@@ -1,4 +1,5 @@
-// @ts-check
+//// @ts-check
+const path = require("path");
 
 const siteMetadata = {
   title: "point of view.",
@@ -7,6 +8,38 @@ const siteMetadata = {
   siteUrl: "https://jaewook.me",
   githubUrl: "https://github.com/Jaewoook",
   portfolioUrl: "https://portfolio.jaewook.me",
+};
+
+const rssQuery = `
+{
+  site {
+    siteMetadata {
+      siteUrl
+    }
+  }
+  allMdx(sort: { frontmatter: { date: DESC } }) {
+    nodes {
+      frontmatter {
+        title
+        date
+        slug
+        secret
+        author
+      }
+    }
+  }
+}
+`;
+
+const rssSerializer = ({ query }) => {
+  console.log("query result:", JSON.stringify(query, null, 2));
+  const siteUrl = query.site.siteMetadata.siteUrl;
+  return query.allMdx.nodes.filter((node) => !node.frontmatter.secret).map((node) => ({
+    title: node.frontmatter.title,
+    date: node.frontmatter.date,
+    author: node.frontmatter.author,
+    url: path.join(siteUrl, node.frontmatter.slug),
+  }));
 };
 
 /**
@@ -52,9 +85,9 @@ const plugins = [
         {
           resolve: "gatsby-remark-autolink-headers",
           options: {
-            elements: ["h1", "h2", "h3"]
-          }
-        }
+            elements: ["h1", "h2", "h3"],
+          },
+        },
       ],
       mdxOptions: {
         remarkPlugins: [import("remark-gfm")],
@@ -69,12 +102,19 @@ const plugins = [
     },
   },
   "gatsby-plugin-catch-links",
-  // {
-  //   resolve: "gatsby-plugin-offline",
-  //   options: {
-  //     precachePages: ["/"]
-  //   }
-  // },
+  {
+    resolve: "gatsby-plugin-feed",
+    options: {
+      feeds: [
+        {
+          serialize: rssSerializer,
+          query: rssQuery,
+          output: "/rss.xml",
+          title: "point of view RSS feed"
+        },
+      ],
+    },
+  },
   {
     resolve: "gatsby-plugin-disqus",
     options: {
