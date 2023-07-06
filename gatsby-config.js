@@ -1,5 +1,4 @@
-//// @ts-check
-const path = require("path");
+// @ts-check
 
 const siteMetadata = {
   title: "point of view.",
@@ -31,15 +30,21 @@ const rssQuery = `
 }
 `;
 
+/**
+ * @type {({ query }: { query: any }) => string[]}
+ */
 const rssSerializer = ({ query }) => {
-  console.log("query result:", JSON.stringify(query, null, 2));
   const siteUrl = query.site.siteMetadata.siteUrl;
-  return query.allMdx.nodes.filter((node) => !node.frontmatter.secret).map((node) => ({
-    title: node.frontmatter.title,
-    date: node.frontmatter.date,
-    author: node.frontmatter.author,
-    url: path.join(siteUrl, node.frontmatter.slug),
-  }));
+  return query.allMdx.nodes
+    .filter((/** @type {{ frontmatter: { secret: boolean; }; }} */ node) => !node.frontmatter.secret)
+    .map((
+      /** @type {{ frontmatter: { title: string; date: string; author: string; slug: string | URL; }; }} */ node
+    ) => ({
+      title: node.frontmatter.title,
+      date: node.frontmatter.date,
+      author: node.frontmatter.author,
+      url: new URL(node.frontmatter.slug, siteUrl).href,
+    }));
 };
 
 /**
@@ -110,7 +115,7 @@ const plugins = [
           serialize: rssSerializer,
           query: rssQuery,
           output: "/rss.xml",
-          title: "point of view RSS feed"
+          title: "point of view RSS feed",
         },
       ],
     },
