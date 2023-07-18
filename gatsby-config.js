@@ -121,12 +121,6 @@ const plugins = [
     },
   },
   {
-    resolve: "gatsby-plugin-disqus",
-    options: {
-      shortname: "jaewook-ahns-logbase",
-    },
-  },
-  {
     resolve: "gatsby-plugin-google-gtag",
     options: {
       trackingIds: ["G-FQPC5W480F"],

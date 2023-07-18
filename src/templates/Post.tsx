@@ -4,13 +4,12 @@
 import { graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Disqus } from "gatsby-plugin-disqus";
 import styled from "styled-components";
 
 /**
  * Internal modules
  */
-import { SEO, TableOfContents } from "../components/blog";
+import { Comment, SEO, TableOfContents } from "../components/blog";
 import * as Heading from "../components/typography/Heading";
 import * as Link from "../components/typography/Link";
 import * as List from "../components/typography/List";
@@ -20,7 +19,6 @@ import * as Paragraph from "../components/typography/Paragraph";
  * Type modules
  */
 import type { HeadFC, PageProps } from "gatsby";
-import type { DisqusConfig } from "gatsby-plugin-disqus";
 
 const TagSpan = styled.span`
   color: rgb(82 82 91);
@@ -74,11 +72,6 @@ const mdxComponents = {
   blockquote: Paragraph.BlockQuote,
 };
 
-interface PageContext {
-  id: string;
-  pagePath: string;
-}
-
 export const query = graphql`
   query GetPostById($id: String) {
     mdx(id: { eq: $id }) {
@@ -108,13 +101,8 @@ export const query = graphql`
   }
 `;
 
-const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuery, PageContext>) => {
+const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuery>) => {
   const heroImage = getImage(data.mdx?.frontmatter?.hero?.childImageSharp?.gatsbyImageData ?? null);
-  const disqusConfig: DisqusConfig = {
-    title: data.mdx?.frontmatter?.title ?? "",
-    url: new URL(pageContext.pagePath, data.site?.siteMetadata?.siteUrl ?? "").href,
-    identifier: pageContext.id,
-  };
 
   return (
     <>
@@ -157,7 +145,7 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
       </div>
       {/* Comment section */}
       <section className="max-w-4xl mx-auto pt-16 max-sm:px-4">
-        <Disqus config={disqusConfig} />
+        <Comment repo="Jaewoook/point-of-view" theme="github-light" />
       </section>
     </>
   );
@@ -165,7 +153,7 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
 
 export default Post;
 
-export const Head: HeadFC<Queries.GetPostByIdQuery, PageContext> = ({ location, data }) => {
+export const Head: HeadFC<Queries.GetPostByIdQuery> = ({ location, data }) => {
   return (
     <SEO
       title={data.mdx?.frontmatter?.title}
