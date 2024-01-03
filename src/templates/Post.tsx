@@ -78,7 +78,7 @@ export const query = graphql`
       excerpt
       tableOfContents
       frontmatter {
-        date(formatString: "DD MMMM, YYYY")
+        date(formatString: "D MMMM, YYYY")
         title
         excerpt
         author
