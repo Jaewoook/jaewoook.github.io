@@ -83,9 +83,24 @@ docker image prune -f
 - 2주에 한 번씩 docker prune 작업 실행
 - 작업 실행 결과 알림 (성공/실패 여부와 확보된 공간과 같이 출력된 메시지)
 <br/>
-그래서 메시지를 전송할 수 있는 봇을 사용해야겠다고 생각했다. 후보는 세 개 정도 됐는데, Slack, Discord, Telegram 정도가 떠오르더라. 나는 그중에 **Telegram 봇을 선택해서 구현**하기로 했다. (Slack과 Discord는 다른 메시지도 오는데 Telegram은 주로 사용하는 메신저가 아니라서 확실히 봇 알림을 구분하기 좋았기 때문에)
+그래서 이 목표를 달성하기 위해서 메시지를 전송할 수 있는 메신저 봇을 사용해야겠다고 생각했다. Slack과 Discord, Telegram을 놓고 고민했는데, 나는 **Telegram을 선택해서 봇을 구현**하기로 했다.
 
-Telegram은 봇 친화적인 서비스여서, *BotFather*라는 봇을 통해서 손쉽게 새로운 봇을 만들 수 있다. 나는 예전에 *"Bot For Jaewook"* 이라는 이름의 Node.js 기반 개인 봇을 만들어뒀기 때문에 이 봇에서 작업하기로 했다.
+### Telegram 봇을 선택한 이유
+
+위 세 메시징 플랫폼은 모두 봇을 만들기 편한 개발환경을 제공한다. 그래서 나는 몇 가지 상황을 놓고, 그 중 내 목표에 제일 부합하는 메신저를 선택했다. 아래는 내가 고려했던 부분이었다.
+
+- Slack: 주로 비즈니스나 개발 커뮤니티 관련 알림을 받기 위해 사용
+  - 현재는 회사를 다니지 않으므로 모든 알림을 꺼놓았다.
+  - 봇을 개인 워크스페이스에 초대해서 사용해야 한다.
+  - 무료 워크스페이스에서는 예전 메시지들이 보이지 않는다.
+- Discord: 게임을 하거나 개발 외 개인적인 메시징 용도로 사용
+  - 봇 알림을 구분하고 싶었는데 디스코드에서 봇을 만들면 개인 메시지와 봇 알림이 섞여서 올 것이다.
+  - 봇 세팅이 귀찮다.
+- Telegram: 거의 사용하지 않음
+  - BotFather를 이용해 텔레그램 내에서 손쉽게 봇을 만들 수 있다.
+  - 별도의 채널에 초대하지 않고도 개인 대화로 봇을 사용할 수 있다. *(디스코드도 가능하다고 한다)*
+
+나는 예전에 *"Bot For Jaewook"* 이라는 이름의 Node.js 기반 개인 텔레그램 봇을 만들어뒀기 때문에 이 봇에서 작업하기로 했다.
 
 ### crontab 대신 선택한 node-cron
 
@@ -157,7 +172,7 @@ const exec = promisify(_exec);
 
 ![bot test](./images/bot-test.png)
 
-저거 하고 뭐 좀 먹고 오니까 텔레그램에 메시지가 한가득 쌓여있었다.. 일단 다 실패라고 해서 내용을 보니 지울 이미지가 없어서 작업이 계속 실패한 것 같은데, 처음에 `docker rmi` 명령어로 이미지를 지우는 방식을 채택했는데, 이렇게 되면 지울 이미지가 없으면 오류가 발생하는 것 같길래 이것도 그냥 `docker image prune` 명령어로 바꾸기로 했다.
+저거 하고 뭐 좀 먹고 오니까 텔레그램에 메시지가 한가득 쌓여있었다.. 일단 다 실패라고 해서 내용을 보니 지울 이미지가 없어서 작업이 계속 실패하고 있었다. 처음에 `docker rmi` 명령어로 이미지를 지우는 방식을 채택했는데, 이 명령어는 지울 이미지가 없다면 이미지 ID가 파라미터로 입력되지 않아 오류가 발생한다는 문제가 있었다. 지울 이미지가 없어도 작업을 성공시키기 위해 이 명령어 대신 `docker image prune` 명령어를 사용하기로 했다.
 
 ## [덤] 텔레그램 봇의 메시지 전송에 대하여
 
@@ -176,4 +191,4 @@ const exec = promisify(_exec);
 1. [GitHub NAL - prune script](https://github.com/Jaewoook/NAL/blob/main/batch/prune-docker.sh)
 2. [GitHub Node.js Telegram Bot API](https://github.com/yagop/node-telegram-bot-api)
 3. [GitHub Node Cron](https://github.com/node-cron/node-cron)
-4. [SafeDev, "What is a dangling image and what is an unused image?", stackoverflow, Oct 13, 2023. https://stackoverflow.com/a/45143234.](stackoverflow)
+4. [SafeDev, "What is a dangling image and what is an unused image?", stackoverflow, Oct 13, 2023. https://stackoverflow.com/a/45143234.](https://stackoverflow.com/a/45143234)
