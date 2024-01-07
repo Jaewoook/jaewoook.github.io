@@ -14,14 +14,16 @@ import * as Heading from "../components/typography/Heading";
 import * as Link from "../components/typography/Link";
 import * as List from "../components/typography/List";
 import * as Paragraph from "../components/typography/Paragraph";
+import { usePreferColorScheme } from "../hooks/usePreferColorScheme";
+import type { ColorSchemeProps } from "../hooks/usePreferColorScheme";
 
 /**
  * Type modules
  */
 import type { HeadFC, PageProps } from "gatsby";
 
-const TagSpan = styled.span`
-  color: rgb(82 82 91);
+const TagSpan = styled.span<ColorSchemeProps>`
+  color: ${({ colorScheme }) => colorScheme === "light" ? "rgb(82 82 91)" : "#d4d4d8"};
   font-weight: 300;
   margin-right: 8px;
   padding: 8px 12px;
@@ -47,12 +49,14 @@ interface TagsProps {
 }
 
 const Tags = (props: TagsProps) => {
+  const { colorScheme } = usePreferColorScheme();
+
   if (!props.tags) return null;
 
   return (
     <div className="flex flex-wrap items-center">
       {props.tags.map((tag) => (
-        <TagSpan key={tag} className="max-sm:mt-2">
+        <TagSpan key={tag} className="max-sm:mt-2" colorScheme={colorScheme}>
           {tag}
         </TagSpan>
       ))}
@@ -108,14 +112,14 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
     <>
       {/* Post header section */}
       <div className="flex flex-col items-center pt-12 max-sm:pt-6 pb-6 px-4">
-        <h1 className="text-zinc-900 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
-        <p className="mt-4 flex text-zinc-700">
+        <h1 className="text-zinc-900 dark:text-zinc-100 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
+        <p className="mt-4 flex text-zinc-700 dark:text-zinc-300">
           {data.mdx?.frontmatter?.author}
           <span className="mx-3">⸺</span>
           {data.mdx?.frontmatter?.date}
         </p>
         {heroImage ? (
-          <div className="mt-8 shadow-slate-400 shadow-lg">
+          <div className="mt-8 shadow-zinc-400 dark:shadow-zinc-800 shadow-lg">
             <GatsbyImage
               className="post-hero-image"
               alt={data.mdx?.frontmatter?.title ?? "hero image"}
