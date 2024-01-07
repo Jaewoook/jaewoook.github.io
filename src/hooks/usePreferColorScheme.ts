@@ -9,7 +9,6 @@ export interface ColorSchemeProps {
 }
 
 export const usePreferColorScheme = () => {
-  const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
   const [theme, setTheme] = useRecoilState(themeState);
 
   const setColorScheme = useCallback((colorScheme: ColorScheme) => {
@@ -29,6 +28,7 @@ export const usePreferColorScheme = () => {
   }, [theme, setTheme]);
 
   useEffect(() => {
+    const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
     let storedTheme = localStorage.getItem("theme");
     let colorScheme: ColorScheme = "light";
 
@@ -52,7 +52,7 @@ export const usePreferColorScheme = () => {
       document.documentElement.style.setProperty("--color", "dark");
     }
     setTheme(colorScheme);
-  }, [colorSchemeQuery, setTheme]);
+  }, [setTheme]);
 
   return {
     colorScheme: theme,
