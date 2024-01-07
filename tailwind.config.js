@@ -6,6 +6,7 @@ module.exports = {
         "./src/pages/*.{js,jsx,ts,tsx}",
         "./content/**/*.mdx"
     ],
+    darkMode: "class",
     theme: {
         extend: {},
     },
