@@ -1,4 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
+
+import { usePreferColorScheme } from "../../hooks/usePreferColorScheme";
 
 interface CommentProps {
   repo: string;
@@ -18,19 +20,21 @@ interface CommentProps {
 }
 
 export const Comment = (props: CommentProps) => {
-  const { repo, issueTerm = "pathname", label = "💬 comment", theme = "preferred-color-scheme" } = props;
+  const { repo, issueTerm = "pathname", label = "💬 comment" } = props;
+  const { colorScheme } = usePreferColorScheme();
   const commentRef = useRef<HTMLDivElement>(null);
+  const attrs = useMemo(() => ({
+    src: "https://utteranc.es/client.js",
+    crossorigin: "anonymous",
+    async: "true",
+    "issue-term": issueTerm,
+    repo,
+    label,
+    theme: colorScheme === "light" ? "github-light" : "github-dark",
+  }), [issueTerm, label, repo, colorScheme]);
+
   useEffect(() => {
     const commentScriptEl = document.createElement("script");
-    const attrs = {
-      src: "https://utteranc.es/client.js",
-      crossorigin: "anonymous",
-      async: "true",
-      "issue-term": issueTerm,
-      repo,
-      label,
-      theme,
-    };
     Object.entries(attrs).forEach(([key, value]) => {
       commentScriptEl.setAttribute(key, value);
     });
@@ -38,7 +42,7 @@ export const Comment = (props: CommentProps) => {
       commentRef.current?.removeChild(commentRef.current.children[idx]);
     }
     commentRef.current?.appendChild(commentScriptEl);
-  }, [issueTerm, label, repo, theme]);
+  }, [attrs]);
 
   return <div ref={commentRef} />;
 };

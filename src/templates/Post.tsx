@@ -119,7 +119,7 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
           {data.mdx?.frontmatter?.date}
         </p>
         {heroImage ? (
-          <div className="mt-8 shadow-slate-400 dark:shadow-slate-900 shadow-lg">
+          <div className="mt-8 shadow-zinc-400 dark:shadow-zinc-800 shadow-lg">
             <GatsbyImage
               className="post-hero-image"
               alt={data.mdx?.frontmatter?.title ?? "hero image"}
