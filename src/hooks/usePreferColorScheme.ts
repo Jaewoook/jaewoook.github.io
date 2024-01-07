@@ -1,10 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
+import { useRecoilState } from "recoil";
 
-type ColorScheme = "light" | "dark";
+import { themeState } from "../states/theme";
+import type { ColorScheme } from "../states/theme";
+
+export interface ColorSchemeProps {
+  colorScheme: ColorScheme;
+}
 
 export const usePreferColorScheme = () => {
   const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  const [theme, setTheme] = useState<ColorScheme>("light");
+  const [theme, setTheme] = useRecoilState(themeState);
 
   const setColorScheme = useCallback((colorScheme: ColorScheme) => {
     if (theme === colorScheme) {
@@ -20,7 +26,7 @@ export const usePreferColorScheme = () => {
     }
     setTheme(colorScheme);
     localStorage.setItem("theme", colorScheme);
-  }, [theme]);
+  }, [theme, setTheme]);
 
   useEffect(() => {
     let storedTheme = localStorage.getItem("theme");
@@ -46,7 +52,7 @@ export const usePreferColorScheme = () => {
       document.documentElement.style.setProperty("--color", "dark");
     }
     setTheme(colorScheme);
-  }, [colorSchemeQuery]);
+  }, [colorSchemeQuery, setTheme]);
 
   return {
     colorScheme: theme,
