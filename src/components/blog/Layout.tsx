@@ -25,7 +25,7 @@ const Layout = (props: React.PropsWithChildren) => {
   const { children } = props;
 
   return (
-    <Wrapper className="flex flex-col bg-neutral-50 dark:bg-neutral-900">
+    <Wrapper className="flex flex-col bg-neutral-50 dark:bg-neutral-900 transition-colors">
       <Header />
       <main className="flex-1 container mx-auto">{children}</main>
       <Footer />
