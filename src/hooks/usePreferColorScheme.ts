@@ -11,21 +11,26 @@ export interface ColorSchemeProps {
 export const usePreferColorScheme = () => {
   const [theme, setTheme] = useRecoilState(themeState);
 
-  const setColorScheme = useCallback((colorScheme: ColorScheme) => {
-    if (theme === colorScheme) {
-      return;
-    }
+  const setColorScheme = useCallback(
+    (colorScheme: ColorScheme) => {
+      if (theme === colorScheme) {
+        return;
+      }
 
-    if (colorScheme === "light") {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.style.setProperty("--color", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      document.documentElement.style.setProperty("--color", "dark");
-    }
-    setTheme(colorScheme);
-    localStorage.setItem("theme", colorScheme);
-  }, [theme, setTheme]);
+      if (colorScheme === "light") {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.setProperty("--color", "light");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#fafafa");
+      } else {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.setProperty("--color", "dark");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#18181b");
+      }
+      setTheme(colorScheme);
+      localStorage.setItem("theme", colorScheme);
+    },
+    [theme, setTheme]
+  );
 
   useEffect(() => {
     const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");

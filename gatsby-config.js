@@ -58,7 +58,7 @@ const plugins = [
       short_name: "point of view.",
       start_url: "/",
       background_color: "#fff",
-      theme_color: "#fff",
+      theme_color: "#fafafa",
       lang: "ko",
       display: "standalone",
       icon: "src/images/favicon.png",
