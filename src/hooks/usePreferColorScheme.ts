@@ -11,48 +11,43 @@ export interface ColorSchemeProps {
 export const usePreferColorScheme = () => {
   const [theme, setTheme] = useRecoilState(themeState);
 
-  const setColorScheme = useCallback((colorScheme: ColorScheme) => {
-    if (theme === colorScheme) {
-      return;
-    }
+  const setColorScheme = useCallback(
+    (colorScheme: ColorScheme) => {
+      if (theme === colorScheme) {
+        return;
+      }
 
-    if (colorScheme === "light") {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.style.setProperty("--color", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      document.documentElement.style.setProperty("--color", "dark");
-    }
-    setTheme(colorScheme);
-    localStorage.setItem("theme", colorScheme);
-  }, [theme, setTheme]);
+      // set global css variable
+      if (colorScheme === "light") {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.setProperty("--color", "light");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#fafafa");
+      } else {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.setProperty("--color", "dark");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#171717");
+      }
+      setTheme(colorScheme);
+      localStorage.setItem("theme", colorScheme);
+    },
+    [theme, setTheme]
+  );
 
   useEffect(() => {
     const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
     let storedTheme = localStorage.getItem("theme");
-    let colorScheme: ColorScheme = "light";
 
     // set default color scheme to localStorage
     if (storedTheme === null) {
-      colorScheme = colorSchemeQuery.matches ? "dark" : "light";
-      localStorage.setItem("theme", colorScheme);
+      const colorScheme = colorSchemeQuery.matches ? "dark" : "light";
+      setColorScheme(colorScheme);
     } else if (storedTheme === "dark") {
-      colorScheme = "dark";
+      setColorScheme("dark");
     } else {
-      // default color scheme is 'light'
-      colorScheme = "light";
+      setColorScheme("light");
     }
 
-    // set global css variable
-    if (colorScheme === "light") {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.style.setProperty("--color", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      document.documentElement.style.setProperty("--color", "dark");
-    }
-    setTheme(colorScheme);
-  }, [setTheme]);
+  }, [setColorScheme]);
 
   return {
     colorScheme: theme,

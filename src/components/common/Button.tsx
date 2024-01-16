@@ -1,12 +1,19 @@
 /**
  * External modules
  */
-import React from "react";
+import styled from "styled-components";
+import tw from "twin.macro";
 
-const defaultClass =
-  "px-3 py-1.5 border border-black rounded bg-white hover:bg-black text-black hover:text-white transition-colors";
-
-export const Button = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  const { className = "", ...rest } = props;
-  return <button className={`${className} ${defaultClass}`} {...rest} />;
-};
+export const Button = styled.button`
+  ${tw`
+    px-3 py-1.5
+    border
+    rounded
+    border-neutral-900 dark:border-neutral-50
+    bg-neutral-50 dark:bg-neutral-900
+    hover:bg-neutral-900 dark:hover:bg-neutral-50
+    text-zinc-900 dark:text-zinc-50
+    hover:text-zinc-50 dark:hover:text-zinc-900
+    transition-colors
+  `}
+`;
