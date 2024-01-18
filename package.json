@@ -1,17 +1,19 @@
 {
-  "name": "jaewoook.github.io",
+  "name": "point-of-view",
   "private": true,
   "version": "1.0.0",
-  "author": "Jaewook Ahn <ajw4586@gmail.com>",
+  "author": "Jaewook Ahn <dev.jaewook@gmail.com>",
   "license": "MIT",
   "keywords": [
+    "point-of-view",
+    "tech",
     "gatsby",
     "personal",
     "blog"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Jaewoook/jaewoook.github.io.git"
+    "url": "https://github.com/Jaewoook/point-of-view.git"
   },
   "homepage": "https://jaewook.me",
   "scripts": {
@@ -20,7 +22,6 @@
     "start": "gatsby develop -p 9876",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "predeploy": "gatsby build --prefix-paths",
     "type-check": "tsc",
     "lint": "eslint . --ext js,ts,jsx,tsx"
   },
@@ -37,6 +38,7 @@
     "gatsby-plugin-offline": "^6.7.0",
     "gatsby-plugin-postcss": "^6.8.0",
     "gatsby-plugin-sharp": "^5.7.0",
+    "gatsby-plugin-sitemap": "^6.13.0",
     "gatsby-plugin-styled-components": "^6.7.0",
     "gatsby-remark-autolink-headers": "^6.8.0",
     "gatsby-remark-images": "^7.7.0",
@@ -49,7 +51,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "recoil": "^0.7.7",
-    "remark-gfm": "^3.0.1",
+    "remark-gfm": "^4.0.0",
     "styled-components": "^5.3.5",
     "styled-system": "^5.1.5",
     "twin.macro": "^3.1.0"

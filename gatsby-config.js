@@ -1,5 +1,13 @@
 // @ts-check
 
+/**
+ * @typedef {import("./gatsby-config").AllMdx} AllMdx
+ * @typedef {import("./gatsby-config").RSSSerializerReturn} RSSSerializerReturn
+ * @typedef {import("./gatsby-config").SitemapQuery} SitemapQuery
+ * @typedef {import("./gatsby-config").SitemapPage} SitemapPage
+ * @typedef {import("./gatsby-config").Sitemap} Sitemap
+ */
+
 const siteMetadata = {
   title: "point of view.",
   name: "Jaewook Ahn",
@@ -31,21 +39,58 @@ const rssQuery = `
 `;
 
 /**
- * @type {({ query }: { query: any }) => string[]}
+ * @type {({ query }: { query: AllMdx }) => RSSSerializerReturn}
  */
 const rssSerializer = ({ query }) => {
-  const siteUrl = query.site.siteMetadata.siteUrl;
+  const siteUrl = query.site.siteMetadata?.siteUrl ?? "";
+
   return query.allMdx.nodes
-    .filter((/** @type {{ frontmatter: { secret: boolean; }; }} */ node) => !node.frontmatter.secret)
-    .map((
-      /** @type {{ frontmatter: { title: string; date: string; author: string; slug: string | URL; }; }} */ node
-    ) => ({
-      title: node.frontmatter.title,
-      date: node.frontmatter.date,
-      author: node.frontmatter.author,
-      url: new URL(node.frontmatter.slug, siteUrl).href,
+    .filter((node) => !node.frontmatter?.secret)
+    .map((node) => ({
+      title: node.frontmatter?.title ?? "",
+      date: node.frontmatter?.date ?? "",
+      author: node.frontmatter?.author ?? "",
+      url: new URL(node.frontmatter?.slug ?? "", siteUrl).href,
     }));
 };
+
+const sitemapQuery = `
+{
+  allSitePage {
+    nodes {
+      path
+      pageContext
+    }
+  }
+}
+`;
+
+/**
+ * @type {(query: SitemapQuery) => SitemapPage[]}
+ */
+const sitemapPagesResolver = (query) => {
+  const pageNodes = query.allSitePage.nodes;
+
+  return pageNodes.map((pageNode) => ({
+    path: pageNode.path,
+    date: pageNode.pageContext?.frontmatter?.date ?? null,
+    secret: pageNode.pageContext?.frontmatter?.secret ?? false,
+  })).filter(sitemapPagesFilter);
+};
+
+/**
+ *
+ * @type {(page: SitemapPage) => boolean}
+ */
+const sitemapPagesFilter = (page) => !page.secret;
+
+/**
+ * @type {(page: SitemapPage) => Sitemap}
+ */
+const sitemapPagesSerializer = ({ date, path }) => ({
+  url: path,
+  lastmod: date,
+});
 
 /**
  * @type {import("gatsby").PluginRef[]}
@@ -127,6 +172,15 @@ const plugins = [
       pluginConfig: {
         head: true,
       },
+    },
+  },
+  {
+    resolve: "gatsby-plugin-sitemap",
+    options: {
+      query: sitemapQuery,
+      resolveSiteUrl: () => siteMetadata.siteUrl,
+      resolvePages: sitemapPagesResolver,
+      serialize: sitemapPagesSerializer,
     },
   },
 ];
