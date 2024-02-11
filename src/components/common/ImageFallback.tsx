@@ -20,13 +20,15 @@ const Wrapper = styled.div<WidthProps & HeightProps>`
 
 interface Props extends WidthProps, HeightProps {
   className?: string;
+  bgClassName?: string;
   size?: number;
+  onClick?: () => void;
 }
 
 export const ImageFallback = (props: Props) => {
-  const { className = "bg-zinc-500", size = 28, width, height } = props;
+  const { bgClassName = "bg-zinc-500", className, size = 28, width, height, onClick } = props;
   return (
-    <Wrapper className={className} width={width} height={height}>
+    <Wrapper className={`${bgClassName} ${className}`} width={width} height={height} onClick={onClick}>
       <BsImageFill size={size} />
     </Wrapper>
   );

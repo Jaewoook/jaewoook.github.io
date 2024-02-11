@@ -57,7 +57,7 @@ export const PostCard = (props: Props) => {
     <Wrapper className={className} onClick={handleClick}>
       {image ? (
         <GatsbyImage
-          className="shadow-zinc-600 dark:shadow-zinc-800 shadow-md top-0 left-0 right-0 bottom-0 select-none"
+          className="shadow-zinc-600 dark:shadow-zinc-800 shadow-md inset-0 select-none"
           imgClassName="brightness-50"
           style={{ position: "absolute" }}
           alt={title}
@@ -67,7 +67,7 @@ export const PostCard = (props: Props) => {
         <ImageFallback
           width="100%"
           height={250}
-          className="shadow-zinc-600 dark:shadow-zinc-800 shadow-md bg-zinc-500 absolute top-0 left-0 right-0 bottom-0 select-none"
+          className="shadow-zinc-600 dark:shadow-zinc-800 shadow-md bg-zinc-500 absolute inset-0 select-none"
         />
       )}
       <div className="z-10 flex flex-col items-center text-white">
