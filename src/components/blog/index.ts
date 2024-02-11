@@ -3,3 +3,4 @@ export { Comment } from "./Comment";
 export { PostCard } from "./PostCard";
 export { SEO } from "./SEO";
 export { TableOfContents } from "./TableOfContents";
+export { Tags } from "./Tags";
