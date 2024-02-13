@@ -12,7 +12,7 @@ import path from "path";
 /**
  * Type modules
  */
-import type { CreatePagesArgs } from "gatsby";
+import type { CreatePagesArgs, CreateWebpackConfigArgs } from "gatsby";
 
 const POST_TEMPLATE_PATH = "src/templates/Post.tsx";
 
@@ -52,5 +52,15 @@ export const createPages = async ({ graphql, actions, reporter }: CreatePagesArg
         pagePath: node.frontmatter.slug,
       },
     });
+  });
+};
+
+export const onCreateWebpackConfig = ({ actions }: CreateWebpackConfigArgs) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src"),
+      },
+    },
   });
 };
