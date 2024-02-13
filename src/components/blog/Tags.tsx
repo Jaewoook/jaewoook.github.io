@@ -12,7 +12,7 @@ const TagSpan = styled.span<ColorSchemeProps>`
   position: relative;
   z-index: 0;
 
-  ::before {
+  &::before {
     content: "";
     position: absolute;
     z-index: -1;
