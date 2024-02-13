@@ -8,12 +8,12 @@ import { getImage } from "gatsby-plugin-image";
 /**
  * Internal modules
  */
-import { Comment, SEO, TableOfContents, Tags } from "../components/blog";
-import { Image } from "../components/common/Image";
-import * as Heading from "../components/typography/Heading";
-import * as Link from "../components/typography/Link";
-import * as List from "../components/typography/List";
-import * as Paragraph from "../components/typography/Paragraph";
+import { Comment, SEO, TableOfContents, Tags } from "@/components/blog";
+import { Image } from "@/components/common/Image";
+import * as Heading from "@/components/typography/Heading";
+import * as Link from "@/components/typography/Link";
+import * as List from "@/components/typography/List";
+import * as Paragraph from "@/components/typography/Paragraph";
 
 /**
  * Type modules

@@ -1,6 +1,12 @@
+/**
+ * External modules
+ */
 import { GatsbyImage } from "gatsby-plugin-image";
 import type { GatsbyImageProps, IGatsbyImageData } from "gatsby-plugin-image";
 
+/**
+ * Internal modules
+ */
 import { ImageFallback } from "./ImageFallback";
 
 interface Props extends Omit<GatsbyImageProps, "image"> {
