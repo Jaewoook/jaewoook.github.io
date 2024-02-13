@@ -121,7 +121,7 @@ const plugins = [
         {
           resolve: "gatsby-remark-images",
           options: {
-            maxWidth: 800,
+            maxWidth: 820,
             linkImagesToOriginal: false,
             withWebp: true,
           },
