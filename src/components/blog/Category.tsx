@@ -20,7 +20,7 @@ const CategoryWrapper = styled.div<SpaceProps>`
   align-items: center;
   overflow-x: scroll;
   -ms-overflow-style: none;
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: none;
   }
 `;

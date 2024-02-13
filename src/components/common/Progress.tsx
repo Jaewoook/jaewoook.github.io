@@ -22,7 +22,7 @@ const Indicator = styled.div<{ w: string; }>`
   transition: transform 0.25s ease-out;
   height: 100%;
   mask: linear-gradient(#fff 0 0);
-  ::before {
+  &::before {
     content: "";
     position: absolute;
     background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
