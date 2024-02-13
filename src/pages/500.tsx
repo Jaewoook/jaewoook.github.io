@@ -6,9 +6,9 @@ import { TbPray } from "react-icons/tb";
 /**
  * Internal modules
  */
-import { Button } from "../components/common";
-import { SEO } from "../components/blog";
-import { useSiteMetadata } from "../hooks/useSiteMetadata";
+import { Button } from "@/components/common";
+import { SEO } from "@/components/blog";
+import { useSiteMetadata } from "@/hooks/useSiteMetadata";
 
 /**
  * Type modules

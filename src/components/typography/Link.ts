@@ -5,6 +5,9 @@ import styled from "styled-components";
 import { typography } from "styled-system";
 import tw from "twin.macro";
 
+/**
+ * Type modules
+ */
 import type { TypographyProps } from "styled-system";
 
 export const Anchor = styled.a<TypographyProps>`

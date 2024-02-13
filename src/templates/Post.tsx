@@ -3,66 +3,22 @@
  */
 import { graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import styled from "styled-components";
+import { getImage } from "gatsby-plugin-image";
 
 /**
  * Internal modules
  */
-import { Comment, SEO, TableOfContents } from "../components/blog";
-import * as Heading from "../components/typography/Heading";
-import * as Link from "../components/typography/Link";
-import * as List from "../components/typography/List";
-import * as Paragraph from "../components/typography/Paragraph";
-import { usePreferColorScheme } from "../hooks/usePreferColorScheme";
-import type { ColorSchemeProps } from "../hooks/usePreferColorScheme";
+import { Comment, SEO, TableOfContents, Tags } from "@/components/blog";
+import { Image } from "@/components/common/Image";
+import * as Heading from "@/components/typography/Heading";
+import * as Link from "@/components/typography/Link";
+import * as List from "@/components/typography/List";
+import * as Paragraph from "@/components/typography/Paragraph";
 
 /**
  * Type modules
  */
 import type { HeadFC, PageProps } from "gatsby";
-
-const TagSpan = styled.span<ColorSchemeProps>`
-  color: ${({ colorScheme }) => colorScheme === "light" ? "rgb(82 82 91)" : "#d4d4d8"};
-  font-weight: 300;
-  margin-right: 8px;
-  padding: 8px 12px;
-  position: relative;
-  z-index: 0;
-
-  ::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    padding: 1px;
-    border-radius: 4px;
-    background: linear-gradient(to right, #9c20aa, #fb3570);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-  }
-`;
-
-interface TagsProps {
-  tags: Readonly<(string | null)[] | null | undefined>;
-}
-
-const Tags = (props: TagsProps) => {
-  const { colorScheme } = usePreferColorScheme();
-
-  if (!props.tags) return null;
-
-  return (
-    <div className="flex flex-wrap items-center">
-      {props.tags.map((tag) => (
-        <TagSpan key={tag} className="max-sm:mt-2" colorScheme={colorScheme}>
-          {tag}
-        </TagSpan>
-      ))}
-    </div>
-  );
-};
 
 const mdxComponents = {
   h1: Heading.H1,
@@ -89,7 +45,7 @@ export const query = graphql`
         hero {
           publicURL
           childImageSharp {
-            gatsbyImageData(width: 800)
+            gatsbyImageData(width: 820)
           }
         }
         secret
@@ -118,15 +74,14 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
           <span className="mx-3">⸺</span>
           {data.mdx?.frontmatter?.date}
         </p>
-        {heroImage ? (
-          <div className="mt-8 shadow-zinc-400 dark:shadow-zinc-800 shadow-lg">
-            <GatsbyImage
-              className="post-hero-image"
-              alt={data.mdx?.frontmatter?.title ?? "hero image"}
-              image={heroImage}
-            />
-          </div>
-        ) : null}
+        <div className="mt-8 shadow-zinc-400 dark:shadow-zinc-800 shadow-lg">
+          <Image
+            className="post-hero-image"
+            fallbackWidth={820}
+            fallbackHeight={144}
+            alt={data.mdx?.frontmatter?.title ?? "hero image"}
+            image={heroImage} />
+        </div>
       </div>
       <div className="flex mt-8 justify-end max-sm:mt-4">
         <div className="max-w-4xl px-8 max-xl:max-w-3xl max-xl:px-6 max-sm:px-4 max-sm:w-full">

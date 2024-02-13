@@ -11,7 +11,10 @@
         "skipLibCheck": true,
         "strict": true,
         "target": "ES6",
-        "noEmit": true
+        "noEmit": true,
+        "paths": {
+            "@/*": ["./src/*"]
+        }
     },
     "include": [
         "src/**/*",

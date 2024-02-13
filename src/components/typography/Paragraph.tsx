@@ -8,7 +8,8 @@ export const P = styled.p`
   ${tw`text-zinc-800 dark:text-zinc-200`}
   font-size: 18px;
   line-height: 32px;
-  margin-bottom: 18px;
+  margin-top: 8px;
+  margin-bottom: 10px;
 `;
 
 export const BlockQuote = styled.blockquote`

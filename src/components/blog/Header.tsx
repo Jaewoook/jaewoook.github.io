@@ -12,9 +12,13 @@ import tw from "twin.macro";
 /**
  * Internal modyles
  */
-import { usePreferColorScheme } from "../../hooks/usePreferColorScheme";
-import type { ColorSchemeProps } from "../../hooks/usePreferColorScheme";
-import { useSiteMetadata } from "../../hooks/useSiteMetadata";
+import { usePreferColorScheme } from "@/hooks/usePreferColorScheme";
+import { useSiteMetadata } from "@/hooks/useSiteMetadata";
+
+/**
+ * Type modules
+ */
+import type { ColorSchemeProps } from "@/hooks/usePreferColorScheme";
 
 interface NavItemProps {
   url: string;

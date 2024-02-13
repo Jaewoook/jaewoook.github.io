@@ -6,7 +6,7 @@ import React, { useMemo } from "react";
 /**
  * Internal modules
  */
-import { useSiteMetadata } from "../../hooks/useSiteMetadata";
+import { useSiteMetadata } from "@/hooks/useSiteMetadata";
 
 interface SEOProps {
   path: string;

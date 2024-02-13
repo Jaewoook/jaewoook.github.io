@@ -10,8 +10,8 @@ import tw from "twin.macro";
 /**
  * Internal modules
  */
-import { selectedCategoryState } from "../../states/category";
-import { usePreferColorScheme, type ColorSchemeProps } from "../../hooks/usePreferColorScheme";
+import { selectedCategoryState } from "@/states/category";
+import { usePreferColorScheme, type ColorSchemeProps } from "@/hooks/usePreferColorScheme";
 
 const CategoryWrapper = styled.div<SpaceProps>`
   ${space}

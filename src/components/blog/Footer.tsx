@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa";
 /**
  * Internal modules
  */
-import { useSiteMetadata } from "../../hooks/useSiteMetadata";
+import { useSiteMetadata } from "@/hooks/useSiteMetadata";
 
 export const Footer = () => {
   const siteMetadata = useSiteMetadata();
