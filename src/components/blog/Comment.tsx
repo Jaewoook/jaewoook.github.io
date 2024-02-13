@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 
-import { usePreferColorScheme } from "../../hooks/usePreferColorScheme";
+import { usePreferColorScheme } from "@/hooks/usePreferColorScheme";
 
 interface CommentProps {
   repo: string;

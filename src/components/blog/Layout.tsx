@@ -8,10 +8,13 @@ import styled, { StyleSheetManager } from "styled-components";
 /**
  * Internal modules
  */
+import { Progress } from "@/components/common/Progress";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { Progress } from "../common/Progress";
 
+/**
+ * Type modules
+ */
 import type { ShouldForwardProp } from "styled-components";
 
 const Wrapper = styled.div`

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { usePreferColorScheme } from "../../hooks/usePreferColorScheme";
-import type { ColorSchemeProps } from "../../hooks/usePreferColorScheme";
+import { usePreferColorScheme } from "@/hooks/usePreferColorScheme";
+import type { ColorSchemeProps } from "@/hooks/usePreferColorScheme";
 
 
 const TagSpan = styled.span<ColorSchemeProps>`
