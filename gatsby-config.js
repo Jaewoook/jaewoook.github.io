@@ -1,4 +1,5 @@
 // @ts-check
+const remarkGfm = import("remark-gfm");
 
 /**
  * @typedef {import("./gatsby-config").AllMdx} AllMdx
@@ -130,6 +131,10 @@ const plugins = [
           resolve: "gatsby-remark-prismjs",
           options: {
             showLineNumbers: true,
+            aliases: {
+              "ts": "javascript",
+              "typescript": "javascript",
+            },
           },
         },
         {
@@ -140,7 +145,7 @@ const plugins = [
         },
       ],
       mdxOptions: {
-        remarkPlugins: [import("remark-gfm")],
+        remarkPlugins: [remarkGfm],
       },
     },
   },
