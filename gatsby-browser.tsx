@@ -7,17 +7,22 @@
 // You can delete this file if you're not using it
 
 /**
+ * CSS modules
+ */
+import "./src/styles/global.css";
+import "./src/styles/prismjs/github-theme.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+
+
+/**
  * External modules
  */
 import { useEffect } from "react";
 import { RecoilRoot } from "recoil";
-// import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 
 /**
  * Internal modules
  */
-import "./src/styles/global.css";
-import "./src/styles/syntax-highlight.css";
 import Layout from "./src/components/blog/Layout";
 
 /**
