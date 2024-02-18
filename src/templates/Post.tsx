@@ -1,14 +1,15 @@
 /**
  * External modules
  */
-import { graphql } from "gatsby";
+import loadable from "@loadable/component";
 import { MDXProvider } from "@mdx-js/react";
+import { graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 
 /**
  * Internal modules
  */
-import { Comment, SEO, TableOfContents, Tags } from "@/components/blog";
+import { SEO, TableOfContents, Tags } from "@/components/blog";
 import { Image } from "@/components/common/Image";
 import * as Heading from "@/components/typography/Heading";
 import * as Link from "@/components/typography/Link";
@@ -19,6 +20,8 @@ import * as Paragraph from "@/components/typography/Paragraph";
  * Type modules
  */
 import type { HeadFC, PageProps } from "gatsby";
+
+const Comment = loadable(() => import("@/components/blog/Comment"));
 
 const mdxComponents = {
   h1: Heading.H1,
@@ -62,13 +65,16 @@ export const query = graphql`
 `;
 
 const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuery>) => {
+  const isSSR = typeof window === "undefined";
   const heroImage = getImage(data.mdx?.frontmatter?.hero?.childImageSharp?.gatsbyImageData ?? null);
 
   return (
     <>
       {/* Post header section */}
       <div className="flex flex-col items-center pt-12 max-sm:pt-6 pb-6 px-4">
-        <h1 className="text-zinc-900 dark:text-zinc-100 text-4xl leading-snug font-semibold">{data.mdx?.frontmatter?.title}</h1>
+        <h1 className="text-zinc-900 dark:text-zinc-100 text-4xl leading-snug font-semibold">
+          {data.mdx?.frontmatter?.title}
+        </h1>
         <p className="mt-4 flex text-zinc-700 dark:text-zinc-300">
           {data.mdx?.frontmatter?.author}
           <span className="mx-3">⸺</span>
@@ -80,7 +86,8 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
             fallbackWidth={820}
             fallbackHeight={144}
             alt={data.mdx?.frontmatter?.title ?? "hero image"}
-            image={heroImage} />
+            image={heroImage}
+          />
         </div>
       </div>
       <div className="flex mt-8 justify-end max-sm:mt-4">
@@ -104,7 +111,7 @@ const Post = ({ data, children, pageContext }: PageProps<Queries.GetPostByIdQuer
       </div>
       {/* Comment section */}
       <section className="max-w-4xl mx-auto pt-16 max-sm:px-4">
-        <Comment repo="Jaewoook/point-of-view" theme="github-light" />
+        {!isSSR && <Comment repo="Jaewoook/point-of-view" theme="github-light" />}
       </section>
     </>
   );
