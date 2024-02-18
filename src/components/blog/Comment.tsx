@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 
+
 import { usePreferColorScheme } from "@/hooks/usePreferColorScheme";
 
 interface CommentProps {
@@ -19,7 +20,7 @@ interface CommentProps {
     | "gruvbox-dark";
 }
 
-export const Comment = (props: CommentProps) => {
+const Comment = (props: CommentProps) => {
   const { repo, issueTerm = "pathname", label = "💬 comment" } = props;
   const { colorScheme } = usePreferColorScheme();
   const commentRef = useRef<HTMLDivElement>(null);
@@ -34,15 +35,21 @@ export const Comment = (props: CommentProps) => {
   }), [issueTerm, label, repo, colorScheme]);
 
   useEffect(() => {
+    if (!commentRef.current) {
+      return;
+    }
+
     const commentScriptEl = document.createElement("script");
     Object.entries(attrs).forEach(([key, value]) => {
       commentScriptEl.setAttribute(key, value);
     });
     for (let idx = 0; idx < (commentRef.current?.children.length ?? 0); idx++) {
-      commentRef.current?.removeChild(commentRef.current.children[idx]);
+      commentRef.current.removeChild(commentRef.current.children[idx]);
     }
-    commentRef.current?.appendChild(commentScriptEl);
+    commentRef.current.appendChild(commentScriptEl);
   }, [attrs]);
 
-  return <div ref={commentRef} />;
+  return  <div ref={commentRef} />;
 };
+
+export default Comment;
