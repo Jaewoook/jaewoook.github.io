@@ -12,6 +12,8 @@ export const P = styled.p`
   margin-bottom: 10px;
 `;
 
+export const Span = styled(P).attrs({ as: "span" })``;
+
 export const BlockQuote = styled.blockquote`
   ${tw`text-zinc-800 dark:text-zinc-200 dark:bg-neutral-800`}
   font-size: 18px;
