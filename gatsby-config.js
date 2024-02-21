@@ -72,11 +72,13 @@ const sitemapQuery = `
 const sitemapPagesResolver = (query) => {
   const pageNodes = query.allSitePage.nodes;
 
-  return pageNodes.map((pageNode) => ({
-    path: pageNode.path,
-    date: pageNode.pageContext?.frontmatter?.date ?? null,
-    secret: pageNode.pageContext?.frontmatter?.secret ?? false,
-  })).filter(sitemapPagesFilter);
+  return pageNodes
+    .map((pageNode) => ({
+      path: pageNode.path,
+      date: pageNode.pageContext?.frontmatter?.date ?? null,
+      secret: pageNode.pageContext?.frontmatter?.secret ?? false,
+    }))
+    .filter(sitemapPagesFilter);
 };
 
 /**
@@ -128,12 +130,20 @@ const plugins = [
           },
         },
         {
+          resolve: "gatsby-remark-mermaid",
+          options: /** @type {import('gatsby-remark-mermaid').Options} */ ({
+            mermaidConfig: {
+              theme: "neutral"
+            }
+          }),
+        },
+        {
           resolve: "gatsby-remark-prismjs",
           options: {
             showLineNumbers: true,
             aliases: {
-              "ts": "javascript",
-              "typescript": "javascript",
+              ts: "javascript",
+              typescript: "javascript",
             },
           },
         },
