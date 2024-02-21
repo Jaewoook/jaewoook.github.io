@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { P } from "../typography/Paragraph";
 
 const MermaidParagraph = styled(P).attrs({ as: "div" })`
+  user-select: none;
   & > p {
     margin: 0;
     width: 100%;
