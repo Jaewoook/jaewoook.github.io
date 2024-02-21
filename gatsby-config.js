@@ -130,14 +130,6 @@ const plugins = [
           },
         },
         {
-          resolve: "gatsby-remark-mermaid",
-          options: /** @type {import('gatsby-remark-mermaid').Options} */ ({
-            mermaidConfig: {
-              theme: "neutral"
-            }
-          }),
-        },
-        {
           resolve: "gatsby-remark-prismjs",
           options: {
             showLineNumbers: true,
