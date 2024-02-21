@@ -17,7 +17,6 @@
   },
   "homepage": "https://jaewook.me",
   "scripts": {
-    "postinstall": "npx playwright install --with-deps chromium",
     "build": "gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "gatsby develop -p 9876",
@@ -45,7 +44,6 @@
     "gatsby-plugin-styled-components": "^6.7.0",
     "gatsby-remark-autolink-headers": "^6.8.0",
     "gatsby-remark-images": "^7.7.0",
-    "gatsby-remark-mermaid": "^4.0.0",
     "gatsby-remark-prismjs": "^7.7.0",
     "gatsby-source-filesystem": "^5.7.0",
     "gatsby-transformer-remark": "^6.7.0",

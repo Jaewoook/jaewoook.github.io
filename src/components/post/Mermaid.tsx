@@ -8,16 +8,12 @@ import styled from "styled-components";
  */
 import { P } from "../typography/Paragraph";
 
-const MermaidParagraph = styled(P).attrs({ as: "div" })`
+const MermaidParagraph = styled(P).attrs({ as: "div", className: "mermaid-container" })`
   user-select: none;
-  & > p {
-    margin: 0;
-    width: 100%;
 
-    & > svg {
-      margin: auto;
-      line-height: 20px;
-    }
+  & svg {
+    margin: auto;
+    /* line-height: 20px; */
   }
 `;
 
