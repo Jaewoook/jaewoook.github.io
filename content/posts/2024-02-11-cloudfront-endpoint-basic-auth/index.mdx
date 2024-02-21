@@ -12,7 +12,7 @@ tags:
   - basic authentication
 ---
 
-import { Mermaid, FigureImage } from "@/components/post";
+import { FigureImage } from "@/components/post";
 import { Span } from "@/components/typography/Paragraph";
 
 하나의 서비스를 만들기 위해서는 다양한 방면에서 많은 시간과 노력이 필요하다. 물론 회사에서, 혹은 팀으로 작업하게 되면 역할 분담이 되겠지만, 개인적으로 사이드 프로젝트를 진행하는 경우에는 어쩔 수 없이 혼자 여러 부분을 신경 쓸 수밖에 없다. 이러한 상황에서 계륵 같은 존재가 바로 **인증**이다. 인증은 거의 모든 서비스에 없어서는 안 되는 존재이지만 꼼꼼한 구현이 필요하다. 프로젝트마다 다른 요구사항 덕분에 인증을 구현하는 적절한 방식을 선택해서 개발해야 하므로 초반에는 인증에 대해 고민하지 않고 기능부터 개발하는 경우도 많다.
@@ -39,19 +39,7 @@ Basic 인증은 다른 인증과 달리 Username과 Password 값으로 인증을
 
 이를 도표로 정리하면 다음과 같다.
 
-<Mermaid>
-```mermaid
-%%{ init: { 'flowchart': { 'curve': 'bumpX' }}}%%
-graph LR
-    Client
-    Cloudfront
-    Function{Authentication}
-    Origin
-    Unauthorized
-    Client --> Cloudfront --> Function -- Success --> Origin
-    Function -- failure --> Unauthorized
-```
-</Mermaid>
+![simple auth flow](./diagrams/simple-auth-flow.png)
 
 이 글에서 설명할 간단한 인증을 구성하는 방법은 다음과 같은 단계를 따른다.
 
@@ -261,26 +249,7 @@ function handler(event) {
 
 서비스에 요청을 보내게 되면 아래와 같은 흐름으로 요청을 처리하게 됨을 알 수 있다. Cloudfront Function과 ALB HTTP Listener 모두 인증을 거치므로 인증 헤더 없이는 서비스에 접근할 수 없게 되는 것이다.
 
-<Mermaid>
-```mermaid
-%%{ init: { 'flowchart': { 'curve': 'bumpX' }}}%%
-graph LR
-    Client[Client Request]
-    subgraph Cloudfront
-        CF{CF Function}
-        end
-    subgraph ALB
-        Rule{ALB Rule}
-        end
-    Unauthorized
-    ECS
-    Client --> CF
-    CF -- Success --> ALB
-    CF -- Failure --> Unauthorized
-    Rule -- Success --> ECS
-    Rule -- Failure --> Unauthorized
-```
-</Mermaid>
+![full auth flow](./diagrams/full-auth-flow.png)
 
 지금까지 AWS에서 HTTP 인증을 활용해 서비스에 대한 인증을 구성하는 방법에 대해 알아보았다. 간단하게 인증을 구성하는 방법이라고 했지만 설정 과정이 그렇게 단순하지는 않다. 그래도 로그인 페이지 구현의 생략, 인증 세션 혹은 토큰 발급 과정 등을 생략할 수 있으므로 상대적으로 빠르게 인증 구색을 갖출 수 있다는 장점이 있다고 생각한다. 이 글에서는 AWS 플랫폼에서 제공하는 기본적인 기능을 활용하는 방향으로 설명을 진행하였는데, 어느 환경이든 이와 비슷하게 구성이 가능하다. 이 글이 조금이라도 도움이 되었길 바라며 글을 마치겠다.
 
