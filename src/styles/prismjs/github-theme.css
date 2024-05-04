@@ -297,6 +297,14 @@ pre[class*="language-"] {
     color: var(--color-fg-default);
 }
 
+.language-python .token.keyword {
+    color: var(--color-red);
+}
+
+.language-python .token.function {
+    color: var(--color-purple);
+}
+
 /* General */
 .token.bold {
     font-weight: bold;
