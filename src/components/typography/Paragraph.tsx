@@ -8,8 +8,8 @@ export const P = styled.p`
   ${tw`text-zinc-800 dark:text-zinc-200`}
   font-size: 18px;
   line-height: 32px;
-  margin-top: 8px;
-  margin-bottom: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
 `;
 
 export const Span = styled(P).attrs({ as: "span" })``;
@@ -22,6 +22,7 @@ export const BlockQuote = styled.blockquote`
   background: #efefef;
   padding: 8px 16px;
   > p {
-    margin-bottom: 0;
+    margin-top: 0.375em;
+    margin-bottom: 0.375em;
   }
 `;
