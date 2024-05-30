@@ -40,7 +40,10 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       excerpt
       tableOfContents
-      frontmatter {
+      rawFrontmatter: frontmatter {
+        date(formatString: "YYYY-MM-DD")
+      }
+      frontmatter: frontmatter {
         date(formatString: "D MMMM, YYYY")
         title
         excerpt
@@ -122,10 +125,14 @@ export default Post;
 export const Head: HeadFC<Queries.GetPostByIdQuery> = ({ location, data }) => {
   return (
     <SEO
+      type="article"
       title={data.mdx?.frontmatter?.title}
       description={data.mdx?.frontmatter?.excerpt ?? data.mdx?.excerpt}
       path={location.pathname}
       image={data.mdx?.frontmatter?.hero?.publicURL}
+      section={data.mdx?.frontmatter?.category}
+      publishedTime={data.mdx?.rawFrontmatter?.date}
+      tags={data.mdx?.frontmatter?.tags}
     />
   );
 };
