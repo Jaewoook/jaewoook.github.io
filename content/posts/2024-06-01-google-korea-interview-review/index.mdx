@@ -13,11 +13,10 @@ tags:
   - gReach
 ---
 
-import { Span } from "@/components/typography/Paragraph";
+import { Span, Extra } from "@/components/typography/Paragraph";
 
 export const Emphasis = ({ children }) => <Span className="!text-teal-500 font-medium">{children}</Span>;
-export const Highlight = ({ children }) => <Span className="bg-teal-500 !text-white font-medium">{children}</Span>
-export const Extra = ({ children }) => <Span className="!text-zinc-600 font-light">{children}</Span>
+export const Highlight = ({ children }) => <Span className="bg-teal-500 dark:bg-teal-700 !text-white font-medium">{children}</Span>
 
 # 글을 시작하며
 

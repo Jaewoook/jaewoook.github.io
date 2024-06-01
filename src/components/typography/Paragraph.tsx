@@ -14,6 +14,10 @@ export const P = styled.p`
 
 export const Span = styled(P).attrs({ as: "span" })``;
 
+export const Extra = styled(Span)`
+  ${tw`text-zinc-600 dark:text-zinc-400 font-light`}
+`;
+
 export const BlockQuote = styled.blockquote`
   ${tw`text-zinc-800 dark:text-zinc-200 dark:bg-neutral-800`}
   font-size: 18px;
