@@ -29,16 +29,20 @@ export const SEO = (props: React.PropsWithChildren<SEOProps>) => {
       return siteMetadata?.title ?? "";
     }
   }, [title, siteMetadata?.title]);
-  const pageDescription = description ?? siteMetadata?.description;
+  const pageUrl = useMemo(() => siteMetadata?.siteUrl + path, [siteMetadata, path]);
+  const pageDescription = useMemo(() => description ?? siteMetadata?.description, [siteMetadata, description]);
   const pageTags = useMemo(() => (tags?.filter((tag) => !!tag) ?? []) as string[], [tags]);
 
   return (
     <>
       <html lang="ko" />
+      <meta name="twitter:card" content="summary" />
       <title>{pageTitle}</title>
       <meta property="og:title" content={pageTitle} />
+      <meta name="twitter:title" content={pageTitle} />
       {siteMetadata?.title ? <meta property="og:site_name" content={siteMetadata?.title} /> : null}
-      <meta property="og:url" content={siteMetadata?.siteUrl + path} />
+      <meta property="og:url" content={pageUrl} />
+      <meta name="twitter:url" content={pageUrl} />
       {siteMetadata?.name ? <meta name="author" content={siteMetadata?.name} /> : null}
       <meta property="og:type" content={type} />
       <meta property="og:locale" content="ko_KR" />
@@ -46,6 +50,7 @@ export const SEO = (props: React.PropsWithChildren<SEOProps>) => {
         <>
           <meta name="description" content={pageDescription} />
           <meta property="og:description" content={pageDescription} />
+          <meta name="twitter:description" content={pageDescription} />
         </>
       ) : null}
       {type === "article" ? (
@@ -62,6 +67,7 @@ export const SEO = (props: React.PropsWithChildren<SEOProps>) => {
         <>
           <meta name="image" content={`${siteMetadata?.siteUrl}${image}`} />
           <meta property="og:image" content={`${siteMetadata?.siteUrl}${image}`} />
+          <meta name="twitter:image" content={`${siteMetadata?.siteUrl}${image}`} />
         </>
       ) : null}
       <meta name="apple-mobile-web-app-capable" content="yes" />
