@@ -36,32 +36,32 @@ export const SEO = (props: React.PropsWithChildren<SEOProps>) => {
     <>
       <html lang="ko" />
       <title>{pageTitle}</title>
-      <meta name="og:title" content={pageTitle} />
-      {siteMetadata?.title ? <meta name="og:site_name" content={siteMetadata?.title} /> : null}
-      <meta name="og:url" content={siteMetadata?.siteUrl + path} />
+      <meta property="og:title" content={pageTitle} />
+      {siteMetadata?.title ? <meta property="og:site_name" content={siteMetadata?.title} /> : null}
+      <meta property="og:url" content={siteMetadata?.siteUrl + path} />
       {siteMetadata?.name ? <meta name="author" content={siteMetadata?.name} /> : null}
-      <meta name="og:type" content={type} />
-      <meta name="og:locale" content="ko_KR" />
+      <meta property="og:type" content={type} />
+      <meta property="og:locale" content="ko_KR" />
       {pageDescription ? (
         <>
           <meta name="description" content={pageDescription} />
-          <meta name="og:description" content={pageDescription} />
+          <meta property="og:description" content={pageDescription} />
         </>
       ) : null}
       {type === "article" ? (
         <>
-          {siteMetadata?.name ? <meta name="og:article:author" content={siteMetadata?.name} /> : null}
-          {publishedTime ? <meta name="og:article:published_time" content={publishedTime} /> : null}
-          {section ? <meta name="og:article:section" content={section} /> : null}
+          {siteMetadata?.name ? <meta property="og:article:author" content={siteMetadata?.name} /> : null}
+          {publishedTime ? <meta property="og:article:published_time" content={publishedTime} /> : null}
+          {section ? <meta property="og:article:section" content={section} /> : null}
           {pageTags.map((tag) => (
-            <meta key={tag} name="og:article:tag" content={tag} />
+            <meta key={tag} property="og:article:tag" content={tag} />
           ))}
         </>
       ) : null}
       {image ? (
         <>
           <meta name="image" content={`${siteMetadata?.siteUrl}${image}`} />
-          <meta name="og:image" content={`${siteMetadata?.siteUrl}${image}`} />
+          <meta property="og:image" content={`${siteMetadata?.siteUrl}${image}`} />
         </>
       ) : null}
       <meta name="apple-mobile-web-app-capable" content="yes" />
