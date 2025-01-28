@@ -40,9 +40,9 @@ const Layout = (props: React.PropsWithChildren) => {
 
   return (
     <StyleSheetManager shouldForwardProp={shouldForwardProp}>
-      <Wrapper className="flex flex-col bg-neutral-50 dark:bg-neutral-900 transition-colors">
+      <Wrapper className="flex flex-col bg-neutral-100 transition-colors dark:bg-neutral-900">
         <Header />
-        <main className="flex-1 container mx-auto">{children}</main>
+        <main className="container mx-auto flex-1">{children}</main>
         <Footer />
         <Progress />
       </Wrapper>

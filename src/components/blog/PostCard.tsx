@@ -1,39 +1,15 @@
-/**
- * External modules
- */
 import { useCallback } from "react";
 import { navigate } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import styled from "styled-components";
-import tw from "twin.macro";
+import { twMerge } from "tailwind-merge";
 
-/**
- * Internal modules
- */
 import { ImageFallback } from "../common/ImageFallback";
 
-/**
- * Type modules
- */
 import type { IGatsbyImageData } from "gatsby-plugin-image";
-
-const Wrapper = styled.div`
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  cursor: pointer;
-  ${tw`max-sm:min-w-full`}
-  min-width: 440px;
-  min-height: 250px;
-  padding: 0 24px;
-`;
 
 interface Props {
   className?: string;
   title: string;
-  date: string;
   secret: boolean;
   image?: IGatsbyImageData;
   excerpt: string;
@@ -42,40 +18,36 @@ interface Props {
 }
 
 export const PostCard = (props: Props) => {
-  const { className = "flex", title, date, secret, category, image, slug } = props;
+  const { className = "flex", title, secret, category, image, slug } = props;
 
   const handleClick = useCallback(() => {
     navigate("/" + slug);
   }, [slug]);
 
   // Do not display secret content in production mode
-  if (process.env.NODE_ENV === "production" && secret) {
+  // if (process.env.NODE_ENV === "production" && secret) {
+  if (secret) {
     return null;
   }
 
   return (
-    <Wrapper className={className} onClick={handleClick}>
-      {image ? (
-        <GatsbyImage
-          className="shadow-zinc-600 dark:shadow-zinc-800 shadow-md inset-0 select-none"
-          imgClassName="brightness-50"
-          style={{ position: "absolute" }}
-          alt={title}
-          image={image}
-        />
-      ) : (
-        <ImageFallback
-          width="100%"
-          height={250}
-          className="shadow-zinc-600 dark:shadow-zinc-800 shadow-md bg-zinc-500 absolute inset-0 select-none"
-        />
+    <div
+      className={twMerge(
+        "flex min-h-[120px] cursor-pointer flex-col overflow-hidden rounded-xl bg-white",
+        className
       )}
-      <div className="z-10 flex flex-col items-center text-white">
-        <span className="hover:text-amber-300">{category.toUpperCase()}</span>
-        <div className="w-5 border-b-2"></div>
-        <h3 className="mt-4 text-center break-keep text-2xl font-semibold">{title}</h3>
-        <span className="mt-8 text-sm font-extralight">{date}</span>
+      onClick={handleClick}
+    >
+      {image ? (
+        <GatsbyImage className="h-full max-h-72 min-h-48 w-full" alt={title} image={image} />
+      ) : (
+        <ImageFallback width="100%" height="12rem" className="select-none bg-zinc-500" />
+      )}
+      <div className="flex flex-col px-4 pb-3 pt-4 text-black">
+        <span className="text-xs text-green-800">{category.toUpperCase()}</span>
+        <div className="w-6 border-b-2 border-neutral-300"></div>
+        <h3 className="mt-2 break-keep text-xl font-semibold">{title}</h3>
       </div>
-    </Wrapper>
+    </div>
   );
 };
