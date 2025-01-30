@@ -29,7 +29,7 @@
         "@emotion/is-prop-valid": "^1.2.1",
         "@loadable/component": "^5.16.3",
         "@mdx-js/react": "^3.0.1",
-        "@sentry/gatsby": "^7.44.2",
+        "@sentry/gatsby": "^8.52.0",
         "gatsby": "^5.7.0",
         "gatsby-plugin-catch-links": "^5.7.0",
         "gatsby-plugin-feed": "^5.11.0",

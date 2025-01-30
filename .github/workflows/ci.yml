@@ -17,6 +17,18 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: "Run TypeScript type check"
         run: yarn type-check
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ".tool-versions"
+          cache: "yarn"
+      - name: "Install package dependenciEs"
+        run: yarn install --frozen-lockfile
+      - name: "Build project"
+        run: yarn build
   lint:
     runs-on: ubuntu-latest
     steps:

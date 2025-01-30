@@ -1,4 +1,10 @@
 // @ts-check
+
+// load .env file
+require("dotenv").config({
+  path: ".env",
+});
+
 const remarkGfm = import("remark-gfm");
 
 /**
@@ -192,16 +198,13 @@ const plugins = [
   },
 ];
 
-if (process.env.NODE_ENV === "production") {
-  plugins.push({
-    resolve: "@sentry/gatsby",
-    options: {
-      dsn: "https://f864f1fd319441c494152a7686d1283a@o415139.ingest.sentry.io/4504888767610880",
-    },
-  });
-} else {
-  console.info("Skipped plugin: @sentry/gatsby");
-}
+plugins.push({
+  resolve: "@sentry/gatsby",
+  options: {
+    dsn: process.env.SENTRY_DSN,
+    deleteSourcemapsAfterUpload: true,
+  },
+});
 
 /**
  * @type {import("gatsby").GatsbyConfig}
