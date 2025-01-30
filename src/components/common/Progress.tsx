@@ -46,7 +46,7 @@ export const Progress = () => {
     return () => {
       window.removeEventListener("scroll", handleScrollEvent);
     };
-  }, []);
+  }, [handleScrollEvent]);
 
   return (
     <Wrapper>

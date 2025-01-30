@@ -33,7 +33,7 @@ export const PostCard = (props: Props) => {
   return (
     <div
       className={twMerge(
-        "flex min-h-[120px] cursor-pointer flex-col overflow-hidden rounded-xl bg-white",
+        "flex min-h-[120px] cursor-pointer flex-col overflow-hidden rounded-xl bg-white dark:bg-zinc-800",
         className
       )}
       onClick={handleClick}
@@ -41,11 +41,11 @@ export const PostCard = (props: Props) => {
       {image ? (
         <GatsbyImage className="h-full max-h-72 min-h-48 w-full" alt={title} image={image} />
       ) : (
-        <ImageFallback width="100%" height="12rem" className="select-none bg-zinc-500" />
+        <ImageFallback width="100%" height="12rem" className="select-none bg-zinc-500 dark:bg-zinc-600" />
       )}
-      <div className="flex flex-col px-4 pb-3 pt-4 text-black">
-        <span className="text-xs text-green-800">{category.toUpperCase()}</span>
-        <div className="w-6 border-b-2 border-neutral-300"></div>
+      <div className="flex flex-col px-4 pb-3 pt-4 text-zinc-900 dark:text-zinc-300">
+        <span className="text-xs text-green-800 dark:text-green-500">{category.toUpperCase()}</span>
+        <div className="w-6 border-b-2 border-neutral-300 dark:border-neutral-500"></div>
         <h3 className="mt-2 break-keep text-xl font-semibold">{title}</h3>
       </div>
     </div>
