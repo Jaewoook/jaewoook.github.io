@@ -16,8 +16,5 @@
             "@/*": ["./src/*"]
         }
     },
-    "include": [
-        "src/**/*",
-        "./gatsby-*",
-    ]
+    "include": ["src/**/*", "./gatsby-*"]
 }
